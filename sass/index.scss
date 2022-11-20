@@ -9,6 +9,8 @@ $darker-blue: #081646;
 $orange: #FF9C4A;
 $grey: #D0D9E2;
 $beige: #F8953A;
+$black: #000000;
+$white: #FFFFFF;
 
 // Typography
 :root {
@@ -75,7 +77,7 @@ $beige: #F8953A;
 }
 
 body {
-    background-color: $grey;
+    background-color: $off-white;
 }
 
 // Typography
@@ -526,6 +528,7 @@ video::-webkit-media-controls {
                 border-radius: 0px 0px 6px 6px; // making bottom corners round and top corners filled
                 width: 100%;
                 font-size: var(--body-font-size);
+                font-weight: bold;
 
                 .fa-plus {
                     margin-right: 10px;
@@ -852,10 +855,10 @@ video::-webkit-media-controls {
 
                 i {
                     font-size: 3rem;
-                    color: $blue;
+                    color: $black;
 
                     &:hover {
-                        color: $dark-blue;
+                        color: $light-blue;
                     }
                 }
             }
