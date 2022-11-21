@@ -289,7 +289,7 @@ video::-webkit-media-controls {
             justify-content: space-between;
 
             #login {
-                @include button-secondary();
+                @include button-primary();
                 margin-right: 2rem;
                 width: 50%;
             }
