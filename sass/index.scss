@@ -742,8 +742,22 @@ video::-webkit-media-controls {
         max-width: 100%;
     }
 
-    #gold-tier img {
-        height: 175px;
+    #gold-tier {
+
+        #mttech { // logo shape messes with scaling
+            height: 150px;
+            max-width: 100%;
+        }
+
+        #wegmans { // logo size messes with scaling
+            height: 400px;
+            max-width: 100%;
+        }
+        
+        img {
+            height: 175px;
+            max-width: 100%;
+        }
     }
 
     #bronze-silver-tier img {
@@ -754,7 +768,8 @@ video::-webkit-media-controls {
         padding-top: 1rem;
 
         img {
-            height: 75px;
+            height: 80px;
+            max-width: 90%;
         }
 
         #stickermule { // their brand's padding messes with size consistancy
