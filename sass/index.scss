@@ -746,7 +746,7 @@ video::-webkit-media-controls {
 
         #mttech { // logo shape messes with scaling
             height: 150px;
-            max-width: 60%;
+            max-width: 100%;
         }
 
         #wegmans { // logo size messes with scaling
@@ -756,7 +756,7 @@ video::-webkit-media-controls {
         
         img {
             height: 175px;
-            max-width: 50%;
+            max-width: 100%;
         }
     }
 
@@ -768,7 +768,7 @@ video::-webkit-media-controls {
         padding-top: 1rem;
 
         img {
-            height: 75px;
+            height: 80px;
             max-width: 90%;
         }
 
