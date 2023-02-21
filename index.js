@@ -120,7 +120,7 @@ $('#sunday').click(function() {
 // Setting the schedule to match the day
 let currentDate = new Date().getDate()
 // Before/during saturday
-if (currentDate <= 5) {
+if (currentDate <= 25) {
     $('#saturday').addClass('day-active');
     $('#sunday').removeClass('day-active');
     $('#feb-25-content').show();
