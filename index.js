@@ -120,7 +120,7 @@ $('#sunday').click(function() {
 // Setting the schedule to match the day
 let currentDate = new Date().getDate()
 // Before/during saturday
-if (currentDate <= 25) {
+if (currentDate <= 25) { // if date is before or equal to the 25th of the month
     $('#saturday').addClass('day-active');
     $('#sunday').removeClass('day-active');
     $('#feb-25-content').show();
@@ -184,7 +184,7 @@ function handleEventData(events) {
         var eventContainer;
         // Deciding which day content box it goes inside
         switch (startDate.getDate()) {
-            case 25: eventContainer = $('#feb-25-content'); break;
+            case 25: eventContainer = $('#feb-25-content'); break; // case numbers correlate with the days of the event
             case 26: eventContainer = $('#feb-26-content'); break;
         }
         // If it doesn't fall into one of those event days, log the problem and quit trying to add it
