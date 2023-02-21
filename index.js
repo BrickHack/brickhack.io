@@ -184,8 +184,8 @@ function handleEventData(events) {
         var eventContainer;
         // Deciding which day content box it goes inside
         switch (startDate.getDate()) {
-            case 5: eventContainer = $('#feb-25-content'); break;
-            case 6: eventContainer = $('#feb-26-content'); break;
+            case 25: eventContainer = $('#feb-25-content'); break;
+            case 26: eventContainer = $('#feb-26-content'); break;
         }
         // If it doesn't fall into one of those event days, log the problem and quit trying to add it
         if (!eventContainer) {
