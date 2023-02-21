@@ -218,12 +218,14 @@ function compareEvents(a, b) {
     }
 }
 
-// Converting dates to something more user friendly - BH7 code unmodified
+// Converting dates to something more user friendly - BH7 code
 function convertDate(date) {
     let output = '';
     // hour
     if (date.getHours() > 12) {
         output = String(date.getHours() - 12);
+    } else if (date.getHours() == 0) { // case for 12am
+        output = String(12);
     } else {
         output = String(date.getHours());
     }
