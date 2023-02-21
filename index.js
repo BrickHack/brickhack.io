@@ -101,8 +101,8 @@ for (let i = 0; i < card.length; i++) {
 $('#saturday').click(function() {
     $('#saturday').addClass('day-active');
     $('#sunday').removeClass('day-active');
-    $('#mar-5-content').show();
-    $('#mar-6-content').hide();
+    $('#feb-25-content').show();
+    $('#feb-26-content').hide();
     $('#date-indicator-saturday').show();
     $('#date-indicator-sunday').hide();
 });
@@ -110,8 +110,8 @@ $('#saturday').click(function() {
 $('#sunday').click(function() {
     $('#sunday').addClass('day-active');
     $('#saturday').removeClass('day-active');
-    $('#mar-6-content').show();
-    $('#mar-5-content').hide();
+    $('#feb-26-content').show();
+    $('#feb-25-content').hide();
     $('#date-indicator-sunday').show();
     $('#date-indicator-saturday').hide();
 });
@@ -123,8 +123,8 @@ let currentDate = new Date().getDate()
 if (currentDate <= 5) {
     $('#saturday').addClass('day-active');
     $('#sunday').removeClass('day-active');
-    $('#mar-5-content').show();
-    $('#mar-6-content').hide();
+    $('#feb-25-content').show();
+    $('#feb-26-content').hide();
     $('#date-indicator-saturday').show();
     $('#date-indicator-sunday').hide();
 }
@@ -132,8 +132,8 @@ if (currentDate <= 5) {
 else  {
     $('#sunday').addClass('day-active');
     $('#saturday').removeClass('day-active');
-    $('#mar-6-content').show();
-    $('#mar-5-content').hide();
+    $('#feb-26-content').show();
+    $('#feb-25-content').hide();
     $('#date-indicator-sunday').show();
     $('#date-indicator-saturday').hide();
 }
@@ -184,8 +184,8 @@ function handleEventData(events) {
         var eventContainer;
         // Deciding which day content box it goes inside
         switch (startDate.getDate()) {
-            case 5: eventContainer = $('#mar-5-content'); break;
-            case 6: eventContainer = $('#mar-6-content'); break;
+            case 5: eventContainer = $('#feb-25-content'); break;
+            case 6: eventContainer = $('#feb-26-content'); break;
         }
         // If it doesn't fall into one of those event days, log the problem and quit trying to add it
         if (!eventContainer) {
