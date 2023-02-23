@@ -193,7 +193,7 @@ function handleEventData(events) {
             return; // skip current iteration https://stackoverflow.com/a/31399448/1431900
         }
         // Building HTML and adding it to page
-        let html = `<div class="${divClasses}"><p class="time">${dateString}</p><p>${event.title}</p>${liveIndicator}</div>`;
+        let html = `<div class="${divClasses}"><p class="time">${dateString}</p><p>${event.title}</p><p class="location">${event.location}</p>${liveIndicator}</div>`;
         const eventDiv = eventContainer.append(html);
     });
 }
