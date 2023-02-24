@@ -465,6 +465,12 @@ video::-webkit-media-controls {
                 font-size: 1rem;
                 margin: auto 0; // because it's smaller, centering it vertically
             }
+            
+            .location {
+                opacity: 0.75;
+                font-size: 1rem;
+                margin: auto 0; // because it's smaller, centering it vertically
+            }
 
             .live {
                 font-weight: bold;
