@@ -100,8 +100,8 @@ for (let i = 0; i < card.length; i++) {
 $('#saturday').click(function() {
     $('#saturday').addClass('day-active');
     $('#sunday').removeClass('day-active');
-    $('#mar-5-content').show();
-    $('#mar-6-content').hide();
+    $('#feb-25-content').show();
+    $('#feb-26-content').hide();
     $('#date-indicator-saturday').show();
     $('#date-indicator-sunday').hide();
 });
@@ -109,8 +109,8 @@ $('#saturday').click(function() {
 $('#sunday').click(function() {
     $('#sunday').addClass('day-active');
     $('#saturday').removeClass('day-active');
-    $('#mar-6-content').show();
-    $('#mar-5-content').hide();
+    $('#feb-26-content').show();
+    $('#feb-25-content').hide();
     $('#date-indicator-sunday').show();
     $('#date-indicator-saturday').hide();
 });
@@ -119,11 +119,11 @@ $('#sunday').click(function() {
 // Setting the schedule to match the day
 let currentDate = new Date().getDate()
 // Before/during saturday
-if (currentDate <= 5) {
+if (currentDate <= 25) { // if date is before or equal to the 25th of the month
     $('#saturday').addClass('day-active');
     $('#sunday').removeClass('day-active');
-    $('#mar-5-content').show();
-    $('#mar-6-content').hide();
+    $('#feb-25-content').show();
+    $('#feb-26-content').hide();
     $('#date-indicator-saturday').show();
     $('#date-indicator-sunday').hide();
 }
@@ -131,8 +131,8 @@ if (currentDate <= 5) {
 else  {
     $('#sunday').addClass('day-active');
     $('#saturday').removeClass('day-active');
-    $('#mar-6-content').show();
-    $('#mar-5-content').hide();
+    $('#feb-26-content').show();
+    $('#feb-25-content').hide();
     $('#date-indicator-sunday').show();
     $('#date-indicator-saturday').hide();
 }
@@ -183,8 +183,8 @@ function handleEventData(events) {
         var eventContainer;
         // Deciding which day content box it goes inside
         switch (startDate.getDate()) {
-            case 5: eventContainer = $('#mar-5-content'); break;
-            case 6: eventContainer = $('#mar-6-content'); break;
+            case 25: eventContainer = $('#feb-25-content'); break; // case numbers correlate with the days of the event
+            case 26: eventContainer = $('#feb-26-content'); break;
         }
         // If it doesn't fall into one of those event days, log the problem and quit trying to add it
         if (!eventContainer) {
@@ -192,7 +192,7 @@ function handleEventData(events) {
             return; // skip current iteration https://stackoverflow.com/a/31399448/1431900
         }
         // Building HTML and adding it to page
-        let html = `<div class="${divClasses}"><p class="time">${dateString}</p><p>${event.title}</p>${liveIndicator}</div>`;
+        let html = `<div class="${divClasses}"><p class="time">${dateString}</p><p>${event.title}</p><p class="location">${event.location}</p>${liveIndicator}</div>`;
         const eventDiv = eventContainer.append(html);
     });
 }
@@ -217,12 +217,14 @@ function compareEvents(a, b) {
     }
 }
 
-// Converting dates to something more user friendly - BH7 code unmodified
+// Converting dates to something more user friendly - BH7 code
 function convertDate(date) {
     let output = '';
     // hour
     if (date.getHours() > 12) {
         output = String(date.getHours() - 12);
+    } else if (date.getHours() == 0) { // case for 12am
+        output = String(12);
     } else {
         output = String(date.getHours());
     }
