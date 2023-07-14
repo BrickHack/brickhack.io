@@ -503,12 +503,12 @@ video::-webkit-media-controls {
 
         &-left {
             width: calc(50% - (#{$card-m} / 2));
-            margin-right: $card-m / 2;
+            margin-right: calc($card-m / 2);
         }
 
         &-right {
             width: calc(50% - (#{$card-m} / 2));
-            margin-left: $card-m / 2;
+            margin-left: calc($card-m / 2);
         }
 
         .card {
