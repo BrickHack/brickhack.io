@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://peterkos@github.com/codeRIT/brickhack.io.git"
+    "url": "https://github.com/BrickHack/brickhack.io.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/codeRIT/brickhack.io/issues"
+    "url": "https://github.com/BrickHack/brickhack.io/issues"
   },
-  "homepage": "https://github.com/codeRIT/brickhack.io#readme",
+  "homepage": "https://github.com/BrickHack/brickhack.io#readme",
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@parcel/transformer-sass": "^2.9.3",
