@@ -1,6 +1,6 @@
 # brickhack.io
 
-![Build](https://github.com/codeRIT/brickhack.io/workflows/Build/badge.svg)
+![Build](https://github.com/BrickHack/brickhack.io/workflows/Build/badge.svg)
 
 The public facing website for BrickHack.
 
@@ -17,7 +17,7 @@ We use [ParcelJS](https://parceljs.org/) and [SASS](https://sass-lang.com/) (the
 ### Cloning the directory
 
 ```bash
-$ git clone https://github.com/codeRIT/brickhack.io.git
+$ git clone https://github.com/BrickHack/brickhack.io.git
 $ cd brickhack.io
 ```
 
@@ -45,12 +45,8 @@ For local development on the gallery:
 - Create a `.env` file in the root of the project
 - Add `IDENTITY_POOL_ID="key"` to the top, where `key` is the AWS IAM key.
 
-**Note: Ask the Engineering team lead (@peterkos) for an AWS key if you do not have one.**
-
 # Development & Deployment
 
 All development work should be done locally in a new branch and/or fork. Then, make a pull request to have the code merged into the develop branch. Once the develop branch gets to a good state, it gets merged into the master branch for a production deployment.
 
-Code pushed to any `codeRIT/brickhack.io` branch will automatically build on [Travis CI](https://travis-ci.org/codeRIT/brickhack.io) for tests. Any build on the master or develop branch will also trigger a deploy to GitHub Pages or our staging [Dokku](https://github.com/progrium/dokku) instance respectively.
-
-(Note that we are currently converting to CircleCI, and if possible, GitHub Actions.)
+Any PRs sent to Develop will build in Netlify to allow for previews before deploying to the production enviornment which is hosted on Github Pages thru a build process that occurs on Github Actions. Any PR to master will build the page and do final tests before the merge will occur
