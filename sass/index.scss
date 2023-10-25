@@ -17,6 +17,11 @@ $white: #FFFFFF;
 $off-white: #F6F8FA;
 $grey: #D0D9E2;
 
+// BH9 Colors
+$darker-blue: #081646;
+$dark-blue: #193787;
+$blue: #1447C8;
+
 // Main gradient
 .bh-gradient {
     // Fallback in case gradient fails to show
@@ -56,14 +61,6 @@ $grey: #D0D9E2;
 // Text color desat-blue for text
 .desatblue-text {
     color: $desat-blue;
-}
-
-// White text underline
-span.white-underline {
-    text-decoration: underline;
-    text-decoration-color: white;
-    -webkit-text-fill-color: white;
-    -moz-text-fill-color: white;
 }
 
 // General Styles -- from bh9.scss
@@ -106,7 +103,7 @@ p {
 
 // Mixins - imported from bh9.scss
 @mixin button-primary {
-    background-color: $off-white;
+    background-color: $blue;
     text-decoration: none;
     user-select: none;
     padding: 1rem 1.5rem;
@@ -121,17 +118,28 @@ p {
     transition: 0.2s all;
 
     &:hover {
-        background-color: $desat-blue;
+        background-color: $dark-blue;
     }
 
     &:active {
         transform: translateY(4px);
         color: $off-white;
-        background-color: $desat-blue;
+        background-color: $darker-blue;
     }
 
     @media screen and (max-width: 900px) {
         font-size: 1em;
+    }
+}
+
+@mixin button-secondary {
+    @include button-primary;
+    background-color: white;
+    color: $blue;
+    border: 2px solid $blue;
+
+    &:hover {
+        color: $off-white;
     }
 }
 
@@ -140,31 +148,32 @@ p {
 
    display: flex;
    flex-direction: column;
-
-   padding: 10px;
    margin: auto;
-
-   .mini-window, .title-bar {
-        max-width: 656px;
-        width: 100%;
-   }
+   padding-top: 10px;
+   padding-bottom: 10px;
 
     .mini-window {
 
+        max-width: 656px;
+        width: 100%;
         max-height: 316px;
+        margin-top: 90px; // from h1
+        padding-bottom: 10px;
+
         display: flex;
+        flex-wrap: nowrap;
         flex-direction: column; // top-down order
         position: relative;
-        margin-top: 90px; // from h1
-        background-color: $orange; // default bg in case gradient fails
         border: 3px solid white;
         flex: 0 0 656px; // no flex grow/shrink; basis at max width
         z-index: 1;
         overflow-y: auto; // expands based on screen size
+        background-color: $orange; // default bg in case gradient fails
 
          // main message
         p {
-            margin-top: 4rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
             margin-left: 3rem;
             color: black;
             text-align: left;
@@ -176,24 +185,24 @@ p {
         #pre-reg-form { 
             display: flex;
             position: relative;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
             margin-top: 1rem; // from mini-window.p
+            justify-content: center;
 
             // elements on same row w/o line break
             white-space: nowrap;
-            overflow-x: hidden;
 
             // takes up rest of mini window
-            width: 100%;
-            height: 100%;
+            flex-grow: 1;
         }
         input[name="email"], input[type="submit"] {
             display: inline-block;
-            width: 100%;
-            height: 100%;
-            
-            margin: 0 5px; // 10 pixels apart left/right
             max-height: 43px;
+            height: 100%;
+            justify-self: center;
+            flex: 1 1 auto;
+            
+            margin: 0 5px; // 5 pixels apart left/right
             font-family: 'Work Sans', sans-serif;
             position: relative;
         }
@@ -201,22 +210,24 @@ p {
         input[name="email"] {
             max-width: 438px;
             width: 438px;
-            flex-basis: 438px;
 
-            justify-self: flex-start;
             font-size: 1.3rem;
             padding-left: 10px;
             border: 3px white solid;
+            margin-bottom: auto; // fills the rest of the bottom
+
+            &:focus {
+                outline: 3px $desat-blue solid;
+            }
         }
 
         input[type="submit"] {
             max-width: 106px;
             width: 106px;
-            flex-basis: 106px;
 
             font-size: 1.3rem;
             border: 3px solid white;
-            opacity: 60%;
+            opacity: 70%;
 
             &:hover {
                 color: $off-white;
@@ -229,6 +240,7 @@ p {
 
         // Main container
         display: flex;
+        width: 100%;
         max-height: 42px;
         position: relative;
         background-color: $desat-blue;
@@ -237,14 +249,15 @@ p {
         z-index: 2;
         align-items: flex-start;
         
-        // Title text box
+        // Title text box (inherits from .mini-window.p)
         .title {
             font-weight: 600; // semi-bold
             bottom: 58px;
             right: 25px;
             position: relative;
             white-space: nowrap; // no overflow when shrinked
-            flex-basis: 260px; // takes up most space in flex
+            flex-basis: 240px; // takes up most space in flex
+            overflow: hidden;
             z-index: 3;
         }
 
@@ -268,8 +281,8 @@ p {
         padding: 0;
         margin: 0;
 
-        width: 90%;
-        max-height: 850px;
+        width: 100%;
+        height: auto;
         order: 1;
         z-index: -1;
         height: 100%;
@@ -326,68 +339,126 @@ p {
         text-align: center;
         line-height: 3;
         order: 2;
+
+        a {
+            text-decoration: underline;
+            text-decoration-color: white;
+            color: white;
+        }
+
+        a:hover {
+            color: $orange;
+        }
     }
 }
 
 // Screen Scaling
+// Stars relocate in different spots for mobile styling
 // Tablet Styling
 @media screen and (max-width: 1200px) {
+
     h1 {
-         font-size: 3rem;
-    }
-
-    .mini-window, .title-bar {
-        max-width: 80%;
-    }
-
-    .mini-window {
-
-        max-height: 200%;
-        height: auto;
-         
-        p {
-            font-size: 1.0rem;
-        }
-
-        input[name="email"] {
-            max-width: 80%;
-        }
-        
+         font-size: 3.6rem;
     }
 
     #pre-reg {
-        max-width: 80%;
-        height: auto;
+
+        .mini-window {
+    
+            width: 98%;
+
+            input[name="email"] {
+                width: 95%;
+            }
+            
+        }
+
+        #star-deco {
+
+            #blue-star {
+                right: 390px;
+                top: 280px;
+                rotate: 15deg;
+            }
+    
+            #orange-star {
+                top: 30px;
+                left: 340px;
+                rotate: 10deg;
+            }
+    
+            #purple-star {
+                top: 260px;
+                left: 426px;
+                rotate: -45deg;
+            }
+    
+            #gradient-star-4pt {
+                bottom: 10px;
+                left: 275px;
+                rotate: 15deg;
+            }
+    
+            #gradient-star-7pt {
+                bottom: 20px;
+                right: 250px;
+                rotate: 15deg;
+            }
+        }
     }
 }
 
 @media screen and (max-width: 1075px) {
+
     h1 {
-        font-size: 2.8rem;
-    }
-
-    .mini-window, .title-bar {
-        max-width: 70%;
-    }
-
-    .mini-window {
-
-        max-height: 220%;
-        height: auto;
-
-        p {
-            font-size: .8rem;
-        }
-
-        input[name="email"] {
-            width: 90%;
-        }
-        
+        font-size: 3.2rem;
     }
 
     #pre-reg {
-        width: 70%;
-        height: auto;
+    
+        .mini-window {
+
+            width: 96%;
+
+            input[name="email"] {
+                width: 70%;
+            }
+            
+        }
+
+
+        #star-deco {
+
+            #blue-star {
+                right: 320px;
+                top: 280px;
+                rotate: 15deg;
+            }
+    
+            #orange-star {
+                top: 30px;
+                left: 290px;
+                rotate: 10deg;
+            }
+    
+            #purple-star {
+                top: 260px;
+                left: 356px;
+                rotate: -45deg;
+            }
+    
+            #gradient-star-4pt {
+                bottom: 10px;
+                left: 225px;
+                rotate: 15deg;
+            }
+    
+            #gradient-star-7pt {
+                bottom: 20px;
+                right: 200px;
+                rotate: 15deg;
+            }
+        }
     }
 }
 
@@ -395,31 +466,155 @@ p {
 @media screen and (max-width: 800px) {
 
     h1 {
-        font-size: 2.6rem;
+        font-size: 2.8rem;
     }
-
-    .mini-window, .title-bar {
-        width: 80%;
-    }
-
-    .mini-window {
-
-        max-height: 240%;
-        height: auto;
-        
-        p {
-            font-size: .6rem;
-        }
-
-        input[name="email"] {
-            width: 60%;
-        }
-    }
-
 
     #pre-reg {
-        max-width: 60%;
-        height: auto;
+    
+        .mini-window {
+
+            width: 94%;
+            height: 100%;
+
+            // Window adjustment to fit to screen
+            p {
+                padding-top: 1rem;
+                margin-left: 1rem;
+            }
+
+            .title-bar {
+
+                .title {
+                    right: 5px;
+                    bottom: 42px;
+                }
+            }
+    
+            input[name="email"] {
+                width: 60%;
+                font-size: 1.15rem;
+                margin-left: 12px;
+            }
+        }
+
+        #star-deco {
+
+            #blue-star {
+                right: 270px;
+                top: 150px;
+                rotate: 15deg;
+            }
+    
+            #orange-star {
+                top: 70px;
+                left: 150px;
+                rotate: 10deg;
+            }
+    
+            #purple-star {
+                top: 260px;
+                left: 306px;
+                rotate: -45deg;
+            }
+    
+            #gradient-star-4pt {
+                top: 260px;
+                left: 160px;
+                rotate: 15deg;
+            }
+    
+            #gradient-star-7pt {
+                bottom: 20px;
+                right: 150px;
+                rotate: 15deg;
+            }
+        }
+    }
+}
+
+// Galaxy Fold Styling
+@media screen and (max-width: 300px) {
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    #pre-reg {
+    
+        .mini-window {
+
+            width: 92%;
+            max-height: 350px; // increases size of the bottom of window
+            margin-top: 60px;
+
+            // Window adjustment to fit to screen
+            p {
+                padding-top: 1rem;
+                margin-left: 1rem;
+                font-size: 1.3rem;
+            }
+
+            .title-bar {
+
+                .title {
+                    right: 5px;
+                    bottom: 40px;
+                }
+            }
+
+            input[name="email"], input[type="submit"] {
+                display: block; // allows wrap to bottom
+                max-height: 45%;
+                margin-bottom: 5px;
+            }
+    
+            input[name="email"] {
+                width: 100%;
+                font-size: .85rem;
+                margin-left: 0;
+            }
+
+            input[type="submit"] {
+                margin-left: 2.2rem; // centered in mini-window
+            }
+        }
+
+        #star-deco {
+
+            #blue-star {
+                right: 270px;
+                top: 150px;
+                rotate: 15deg;
+            }
+    
+            #orange-star {
+                top: 70px;
+                left: 150px;
+                rotate: 10deg;
+            }
+    
+            #purple-star {
+                top: 260px;
+                left: 306px;
+                rotate: -45deg;
+            }
+    
+            #gradient-star-4pt {
+                top: 260px;
+                left: 160px;
+                rotate: 15deg;
+            }
+    
+            #gradient-star-7pt {
+                bottom: 20px;
+                right: 150px;
+                rotate: 15deg;
+            }
+        }
+
+        footer {
+            font-size: .9rem;
+        }
     }
 }
 
