@@ -532,6 +532,24 @@ p {
     }
 }
 
+// Case for scroll overflow on specific screens
+@media screen and (max-width: 360px) {
+
+    #pre-reg {
+
+        .mini-window {
+
+            input[type="submit"] {
+                width: 96px; // prevents scroll overflow
+        
+            }
+
+        }
+
+    }
+
+}
+
 // Galaxy Fold Styling
 @media screen and (max-width: 300px) {
 
