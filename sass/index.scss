@@ -545,17 +545,17 @@ p {
             input[name="email"], input[type="submit"] {
                 display: block; // allows wrap to bottom
                 max-height: 45%;
-                margin-bottom: 8px;
+                margin-bottom: 10px;
             }
 
             input[name="email"] {
-                width: 100%;
+                width: 120%; // increased size of field
                 font-size: .95rem;
-                margin-left: 0;
+                right: 40px; // centered
             }
 
             input[type="submit"] {
-                margin-left: 2.2rem; // centered in mini-window
+                margin-left: 3.05rem; // centered in mini-window
             }
 
         }
@@ -604,6 +604,7 @@ p {
                 width: 100%;
                 font-size: .85rem;
                 margin-left: 0;
+                right: 0px; // reset position
             }
 
             input[type="submit"] {
