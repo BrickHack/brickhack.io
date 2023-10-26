@@ -549,9 +549,9 @@ p {
             }
 
             input[name="email"] {
-                width: 120%; // increased size of field
+                width: 130%; // increased size of field
                 font-size: .95rem;
-                right: 40px; // centered
+                right: 45px; // centered
             }
 
             input[type="submit"] {
@@ -565,7 +565,7 @@ p {
 }
 
 // Galaxy Fold Styling
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 300px) {
 
     h1 {
         font-size: 2.5rem;
@@ -593,18 +593,12 @@ p {
                     bottom: 40px;
                 }
             }
-
-            input[name="email"], input[type="submit"] {
-                display: block; // allows wrap to bottom
-                max-height: 45%;
-                margin-bottom: 5px;
-            }
     
             input[name="email"] {
                 width: 100%;
                 font-size: .85rem;
                 margin-left: 0;
-                right: 0px; // reset position
+                right: 0px; // centering
             }
 
             input[type="submit"] {
