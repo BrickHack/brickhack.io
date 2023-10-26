@@ -256,7 +256,7 @@ p {
             right: 25px;
             position: relative;
             white-space: nowrap; // no overflow when shrinked
-            flex-basis: 240px; // takes up most space in flex
+            flex-basis: 500px; // takes up most space in flex
             overflow: hidden;
             z-index: 3;
         }
@@ -480,6 +480,7 @@ p {
             p {
                 padding-top: 1rem;
                 margin-left: 1rem;
+                margin-right: 1rem;
             }
 
             .title-bar {
@@ -532,16 +533,29 @@ p {
     }
 }
 
-// Case for scroll overflow on specific screens
-@media screen and (max-width: 360px) {
+// Case for smaller phones
+@media screen and (max-width: 400px) {
 
     #pre-reg {
 
         .mini-window {
 
+            max-height: 340px; // increases size of the bottom of window
+
+            input[name="email"], input[type="submit"] {
+                display: block; // allows wrap to bottom
+                max-height: 45%;
+                margin-bottom: 8px;
+            }
+
+            input[name="email"] {
+                width: 100%;
+                font-size: .95rem;
+                margin-left: 0;
+            }
+
             input[type="submit"] {
-                width: 96px; // prevents scroll overflow
-        
+                margin-left: 2.2rem; // centered in mini-window
             }
 
         }
@@ -551,7 +565,7 @@ p {
 }
 
 // Galaxy Fold Styling
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 360px) {
 
     h1 {
         font-size: 2.5rem;
