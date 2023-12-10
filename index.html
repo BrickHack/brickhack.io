@@ -30,57 +30,381 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- BHX Pre-Registration -->
-    <div id="pre-reg">
+    <div id="main-site">
+    <!-- Navbar -->
+    <nav>
+        <div class="top">
+            <i id="toggle" class="fa fa-bars" aria-hidden="true" id="toggle"></i>
+            <a id="logo" href="https://brickhack.io">
+                <img src="assets\bh10\main-site\1-navbar\bhxlogo.svg" alt="BrickHack X Logo" />
+            </a>
+        </div>
+        <div class="left navbar-items">
+            <a class="link" href="#about">About</a>
+            <!-- <a class="link" href="#schedule">Schedule</a> -->
+            <a class="link" href="#faq">FAQ</a>
+            <!-- <a class="link" href="#prizes">Prizes</a> -->
+            <a class="link" href="#sponsors">Sponsors</a>
+            <a class="link" href="#contact">Contact</a>
+        </div>
+        <div class="right">
+            <a class="link" href="https://apply.brickhack.io/">Login</a>
+            <a id="register" href="https://apply.brickhack.io/users/sign_up">REGISTER</a>
+        </div>
+    </nav>
+    <div class="mobile-grayout"></div> 
 
-        <h1 class = "bh-gradient gradient-text">Celebrating 10 Years</h1>
-        <h1 class = "bh-gradient gradient-text">of 
-        <span class="standard-text">BrickHack</span></h1>
+    <!-- MLH Banner (omitted for now) -->
+    <!-- <a id="mlh-trust-badge" href="https://mlh.io/seasons/2024/events" target="_blank">
+        <img src="assets\bh10\main-site\1-navbar\mlhbanner.svg" alt="Major League Hacking 2024 Hackathon Season" style="width:100%">
+    </a> -->
 
-        <div class="bh-gradient mini-window">
-            <div class="title-bar"><p class = "title standard-text">BrickHack X</p>
-                <div id="minimize"><img src="assets/bh10/pre-reg/Mini Windows Icons/Minimize-Button.svg"></div>
-                <div id="maximize"><img src="assets/bh10/pre-reg/Mini Windows Icons/Maximize-Button.svg"></div>
-                <div id="close"><img src="assets/bh10/pre-reg/Mini Windows Icons/Close-Button.svg"></div>
+    <!-- Hero -->
+    <section id="hero">
+        <div id="hero-content">
+            <p>BRICKHACK X • RIT’S PREMIER HACKATHON</p>
+            <h1 class = "bh-gradient gradient-text">10 Years of</h1>
+            <div class="rotate-fade-text">
+                <h1><span id="fadeOut" class="text-show">Brickhack</span></h1>
             </div>
-            <p><span class ="desatblue-text">BrickHack X is returning in early 2024!</span><br>
-                Enter your e-mail to stay updated.</p>
-            <div id ="pre-reg-form">
-                <!-- Mailchimp Email Form reflecting from club.html -->
-            <form action="https://coderit.us11.list-manage.com/subscribe/post?u=122b09a8cef4c1f3888af8e40&amp;id=4c1af7f783" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" rel="noopener" novalidate display="none">
-                <input type="text" value="" class="required email" id="mce-EMAIL" placeholder="hacker@email.com" name="email" />
-                <input type="submit" value="SUBMIT"/>
-                <div id="mce-responses" class="clear">
-                    <div class="response" id="mce-error-response" style="display:none"></div>
-                    <div class="response" id="mce-success-response" style="display:none"></div>
-                </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-            </form>
+            <h3>February 24-25, 2024<br>
+            <a class="standard-text shed-link" href="https://www.google.com/maps/place/RIT+SHED/@43.0839285,-77.6794848,17z/data=!3m1!4b1!4m6!3m5!1s0x89d14d1524488069:0xc6c03c980d10c3f6!8m2!3d43.0839247!4d-77.6746139!16s%2Fg%2F11krhxs7gm?entry=tts" target="_blank">
+                In-person event, RIT SHED</a></h3>
+            <!-- Login and Signup buttons -->
+            <div id="hero-buttons">
+                <a id="login" href="https://apply.brickhack.io/" target="_blank">LOGIN</a>
+                <a id="discord" href="https://discord.gg/2F7RZg3F" target="_blank">DISCORD</a> <!-- Discord link or alternate button needed -->
+            </div>
+            <a id="register" href="https://apply.brickhack.io/users/sign_up" target="_blank">REGISTER</a>
+        </div>
+        <img src="assets\bh10\main-site\2-hero\heroricky.svg" alt="The Ring: Featuring Ricky" id="rickygraphic">
+        <!-- <div id="graphicwrap">
+            <img src="assets\bh10\main-site\2-hero\heroricky.svg" alt="The Ring: Featuring Ricky" id="rickygraphic">
+            <img src="assets/bh10/main-site/2-hero/colorfullines-hero.svg" alt="rainbow lines graphic" id="linegraphic">
+        </div> -->
+    </section>
+    
+    <!-- Photo Carousel -->
+    <div class="carousel">
+        <div class="slide">
+            <div class="wire"></div>
+            <div class="front-clip"></div>
+            <div class="back-clip"></div>
+            <img src="assets\bh10\main-site\2-hero\Photo Carousel\carousel1.png" class="slide-image" alt="BrickHack attendees"/>
+        </div>
+        <div class="slide">
+            <div class="wire"></div>
+            <div class="front-clip"></div>
+            <div class="back-clip"></div>
+            <img src="assets\bh10\main-site\2-hero\Photo Carousel\carousel2.png" class="slide-image" alt="BrickHack attendees"/>
+        </div>
+        <div class="slide">
+            <div class="wire"></div>
+            <div class="front-clip"></div>
+            <div class="back-clip"></div>
+            <img src="assets\bh10\main-site\2-hero\Photo Carousel\carousel3.png" class="slide-image" alt="BrickHack attendees"/>
+        </div>
+        <div class="slide">
+            <div class="wire"></div>
+            <div class="front-clip"></div>
+            <div class="back-clip"></div>
+            <img src="assets\bh10\main-site\2-hero\Photo Carousel\carousel4.png" class="slide-image" alt="BrickHack attendees"/>
+        </div>
+        <div class="slide">
+            <div class="wire"></div>
+            <div class="front-clip"></div>
+            <div class="back-clip"></div>
+            <img src="assets\bh10\main-site\2-hero\Photo Carousel\carousel5.png" class="slide-image" alt="BrickHack attendees"/>
+        </div>
+        <div class="slide">
+            <div class="wire"></div>
+            <div class="front-clip"></div>
+            <div class="back-clip"></div>
+            <img src="assets\bh10\main-site\2-hero\Photo Carousel\carousel6.png" class="slide-image" alt="BrickHack attendees"/>
+        </div>
+        <div class="slide">
+            <div class="wire"></div>
+            <div class="front-clip"></div>
+            <div class="back-clip"></div>
+            <img src="assets\bh10\main-site\2-hero\Photo Carousel\carousel7.png" class="slide-image" alt="BrickHack attendees"/>
+        </div>
+        <div class="slide">
+            <div class="wire"></div>
+            <div class="front-clip"></div>
+            <div class="back-clip"></div>
+            <img src="assets\bh10\main-site\2-hero\Photo Carousel\carousel8.png" class="slide-image" alt="BrickHack attendees"/>
+        </div>
+        <div class="slide">
+            <div class="wire"></div>
+            <div class="front-clip"></div>
+            <div class="back-clip"></div>
+            <img src="assets\bh10\main-site\2-hero\Photo Carousel\carousel9.png" class="slide-image" alt="BrickHack attendees"/>
+        </div>
+        <div class="slide">
+            <div class="wire"></div>
+            <div class="front-clip"></div>
+            <div class="back-clip"></div>
+            <img src="assets\bh10\main-site\2-hero\Photo Carousel\carousel10.png" class="slide-image" alt="BrickHack attendees"/>
+        </div>
+        <div class="slide">
+            <div class="wire"></div>
+            <div class="front-clip"></div>
+            <div class="back-clip"></div>
+            <img src="assets\bh10\main-site\2-hero\Photo Carousel\carousel11.png" class="slide-image" alt="BrickHack attendees"/>
+        </div>
+        <div class="slide">
+            <div class="wire"></div>
+            <div class="front-clip"></div>
+            <div class="back-clip"></div>
+            <img src="assets\bh10\main-site\2-hero\Photo Carousel\carousel12.png" class="slide-image" alt="BrickHack attendees"/>
+        </div>
+    </div>
+
+
+    <!-- Carousel Pictures can be clicked and zoomed in -->
+    <div id="modal">
+        <span id="close"><i id="close" class="fas fa-times"></i></span>
+        <img id="modal-content" alt="image from carousel">
+    </div>
+
+    <!-- About section -->
+    <img id="arrowgraphic" src="assets\bh10\main-site\3-about\swirlyArrow.svg" alt="Swirly Rainbow Arrow pointing downwards"/>
+    <section id="about">
+        <div id="about-text">
+            <h2>What is a Hackathon?</h2>
+            <p>A hackathon is an invention marathon. BrickHack is a 24-hour in-person
+            <br>hackathon that is completely free and open to any university student.</p>
+
+            <p>Apply to come spend <b>February 24th and 25th, 2024</b> with us to learn, collaborate,
+            <br>build, and innovate! Expect food, swag, mentorship, and timeless brick-laden
+            <br>memories!</p>
+        </div>
+
+        <div id="about-cards">
+            <div class="about-card-space">
+                <div class="about-card">
+                    <div class="about-header">
+                        <h3>Applying</h3>
+                    </div>
+                    <p><a href="https://apply.brickhack.io/users/sign_up">Register</a> an account via our application system to apply to BrickHack today! Applications will close by Wednesday, February 21st. 
+                    </p>
+                    <p>If your application is accepted, you will receive an email from our team with more information.</p>
+                    <p>You must be 18+ and a current university student to apply. Applications and event attendance are completely free.</p>
+                </div>
+                <div class="about-end">
+                    <img id="orange6pt" src="assets\bh10\pre-reg\Orange-Star-6.svg" alt="orange-6ptstar graphic">
+                </div>
+            </div>
+
+            <div class="about-card-space">
+                <div class="about-card">
+                    <div class="about-header">
+                        <h3>Participating</h3>
+                        <img id="blue4pt" src="assets\bh10\pre-reg\Blue-Star-4.svg" alt="blue-4ptstar graphic">
+                    </div>
+                    <p>At BrickHack, students compete individually or in teams of 2-4 to build anything they want. 
+                        You could make an app, a website, a game, a design, or any other form of interactive media! 
+                    <br>The possibilities are endless.</p> 
+                    <p>No experience is required; we provide mentors to help you along the way!</p>
+                </div>
             </div>
         </div>
 
-        <!-- Web Decorations / Assets for Backdrop -->
-
-        <div id="star-deco">
-            <div id="blue-star"><img src="assets/bh10/pre-reg/Blue-Star-4.svg"></div>
-            <div id="orange-star"><img src="assets/bh10/pre-reg/Orange-Star-4.svg"></div>
-            <div id="purple-star"><img src="assets/bh10/pre-reg/Purple-Star-4.svg"></div>
-            <div id="gradient-star-4pt"><img src="assets/bh10/pre-reg/Gradient-Star-4.svg"></div>
-            <div id="gradient-star-7pt"><img src="assets/bh10/pre-reg/Gradient-Star-7.svg"></div>
+        <!-- Stats -->
+        <div id="about-stats">
+            <div id="stats-content">
+                <h3>Last year's BrickHack 9 in numbers:</h3>
+                <div id="stats">
+                    <img src="assets\bh10\main-site\3-about\purpleCornerElement.svg" id="purple-corner">
+                    <div>
+                        <p><b>$4,640</b></p>
+                        <p>in prizes</p>
+                        <img src="assets\bh10\pre-reg\Blue-Star-4Alt.svg" alt="blue-4ptstar graphic">
+                    </div>
+                    <div>
+                        <p><b>NEEDS UPDATE</b></p>
+                        <p>schools 
+                        <br>represented</br></p>
+                        <img src="assets\bh10\pre-reg\Orange-Star-6.svg" alt="orange-6ptstar graphic">
+                    </div>
+                    <div>
+                        <p><b>NEEDS UPDATE</b></p>
+                        <p>participants</p>
+                    </div>
+                    <img src="assets\bh10\main-site\3-about\greenCornerElement.svg" id="green-corner">
+                </div>
+            </div>
+            <img src="assets\bh10\main-site\3-about\stackOfBricks.svg" id="brick-graphic" alt="Transparent Stack of Rainbow Bricks"/>
         </div>
+    </section>
 
-        <footer>
-            Interested in sponsoring? E-mail
-            <a href="mailto:sponsorship@brickhack.io">sponsorship@brickhack.io</a><br>
-            View the <a href="./club.html">BrickHack 9 website</a>
-        </footer>
+    <!-- FAQ -->
+    <section id="faq">
+        <div id="faq-title">
+            <div id="faq-title-content">
+                <h2>Frequently Asked Questions</h2>
+                <p>Don't see your question here? Feel free to <a class="standard-text" href="mailto:hello@brickhack.io"><b>contact us</b></a></p>
+            </div>
+            <img source="assets\bh10\main-site\4-faq\faqRicky.svg" alt="Confused Ricky">
+        <div id="faq-cards">
 
-    </id>
+            <div id="faq-cards-left">
+                <div class="card">
+                    <button class="accordion-header">
+                        <i class="fa fa-plus fa-plus-pastel-green" aria-hidden="true"></i>
+                        Is BrickHack in-person this year?
+                    </button>
+                    <div class="panel">
+                        <p>BrickHack X will be a fully in-person experience for all students!</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <button class="accordion-header">
+                        <i class="fa fa-plus fa-plus-teal" aria-hidden="true"></i>
+                        Where is BrickHack being held?
+                    </button>
+                    <div class="panel">
+                        <p>BrickHack X will be held at RIT's campus, in the SHED.</p>
+                        <p>Directions can be found <a href="https://www.google.com/maps/place/RIT+SHED/@43.0839285,-77.6794848,17z/data=!3m1!4b1!4m6!3m5!1s0x89d14d1524488069:0xc6c03c980d10c3f6!8m2!3d43.0839247!4d-77.6746139!16s%2Fg%2F11krhxs7gm?entry=tts"
+                            target="_blank"><b>here</b></a>!</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <button class="accordion-header">
+                        <i class="fa fa-plus fa-plus-orange" aria-hidden="true"></i>
+                        Do I need to bring food?
+                    </button>
+                    <div class="panel">
+                        <p>We'll provide meals and snacks during the hacking period. If you have dietary restrictions, 
+                            we'll do our best to accommodate them!</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <button class="accordion-header">
+                        <i class="fa fa-plus fa-plus-pastel-green" aria-hidden="true"></i>
+                        Why should I come to BrickHack?
+                    </button>
+                    <div class="panel">
+                        <p>In addition to the learning opportunities, mentorship, swag, prizes, and food, 
+                            BrickHack is a great place to meet other passionate and enthusiastic hackers from around the world!</p>
 
+                        <p>You can also network with our sponsors and learn more about their internship opportunities.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="faq-cards-right">
+                <div class="card">
+                    <button class="accordion-header">
+                        <i class="fa fa-plus fa-plus-teal" aria-hidden="true"></i>
+                        Can I re-use an old project?
+                    </button>
+                    <div class="panel">
+                        <p>No. You can start thinking of ideas beforehand, but no work can be done!</p>
+                        <p>(No designs, no UML diagrams, no code, etc.)</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <button class="accordion-header">
+                        <i class="fa fa-plus fa-plus-orange" aria-hidden="true"></i>
+                        When will I know if I got in?
+                    </button>
+                    <div class="panel">
+                        <p>Soon!</p>
+                        <p>Every application is considered on a first-come, first-serve basis. So register early! We'll send an email out if you're accepted.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <button class="accordion-header">
+                        <i class="fa fa-plus fa-plus-pastel-green" aria-hidden="true"></i>
+                        I'm new to coding. What if I have questions while I hack?
+                    </button>
+                    <div class="panel">
+                        <p>This year, we'll have mentors from various tech companies available to help, as well as other hackers who can volunteer their knowledge throughout the event.</p>
+                        <p>During the opening ceremony, we'll go over how to request help from a mentor!</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <button class="accordion-header">
+                        <i class="fa fa-plus fa-plus-teal" aria-hidden="true"></i>
+                        Should I bring my own bricks?
+                    </button>
+                    <div class="panel">
+                        <p>We've got you covered.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsors Section -->
+    <section id="sponsors">
+        <img src="assets\bh10\main-site\5-sponsors\sponsorsImage.svg">
+        <div id="sponsor-content">
+            <h2>Sponsors</h2>
+            <p>Sponsors help make our event possible with their support, event guidance for hackers, and workshop opportunities.</p>
+            <p>Interested in sponsoring our event? Check out our prospectus and contact us today!</p>
+            <div id="sponsor-btns">
+                <a id="prospectus" href="assets\bh10\main-site\5-sponsors\BrickHackX_Prospectus.pdf" target="_blank">PROSPECTUS</a>
+                <a id="email" href="mailto:sponsorship@brickhack.io" target="_blank">CONTACT</a>
+            </div>
+            <!-- <img src="assets\bh10\main-site\5-sponsors\coloredLinesSponsors.svg" id="graphic-bg" alt="Rainbow line background"> -->
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div id="contact-content">
+            <h2>Contact</h2>
+            <p>Feel free to let us know of any questions, comments, and/or concerns at <a class="standard-text link" href="mailto:hello@brickhack.io"><b>hello@brickhack.io</b></a></p>
+            <p>Interested in joining our team? <a class="standard-text" href="./club.html"><br>
+                <b>Check out our club!</b></a></p>
+            <!-- <img src="assets\bh10\main-site\6-contact\coloredLinesContact.svg" id="line-graphic" alt="Rainbow line background"> -->
+        </div>
+        <div id="contact-socials">
+            <p>Connect with us:</p>
+            <div id="social-icons">
+                <a href="https://www.instagram.com/brickhack/" target="_blank">
+                    <img src="assets\bh10\main-site\6-contact\insta-icon.png" aria-hidden="true"></img>
+                </a>
+                <a href="https://twitter.com/brickhackrit" target="_blank">
+                    <img src="assets\bh10\main-site\6-contact\twitter-icon.png" aria-hidden="true"></img>
+                </a>
+                <a href="https://www.facebook.com/brickhackrit" target="_blank">
+                    <img src="assets\bh10\main-site\6-contact\facebook-icon.png" aria-hidden="true"></img>
+                </a>
+                <a href="https://www.linkedin.com/company/brickhack/" target="_blank">
+                    <img src="assets\bh10\main-site\6-contact\linkedin-icon.png" aria-hidden="true"></img>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Register End Section -->
+    <section id="register-end">
+        <h1>Building the Future,<br>
+            One Brick at a Time</h1>
+            <a id="register" href="https://apply.brickhack.io/users/sign_up">REGISTER NOW!</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div id="footer-left">
+            <p><a class="standard-text" href="mailto:hello@brickhack.io"><b>hello@brickhack.io</b></a></p>
+        </div>
+        <div id="footer-right">
+            <p><a class="standard-text" href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank"><b><u>MLH Code of Conduct</u></b></a></p>
+            <p><a class="standard-text" href="https://www.rit.edu/academicaffairs/policiesmanual/c070" target="_blank"><b><u>Privacy Policy</u></b></a></p>
+            <p>Copyright &copy; 2024 BrickHack Club</p>
+        </div>
+    </footer>
+
+    </div>
     <!-- This is where Parcel imports are located! (SASS, etc.) -->
     <script src="./index.js" type="module"></script>
 </body>

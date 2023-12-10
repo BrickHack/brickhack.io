@@ -1,9 +1,20 @@
 // Variables
 // Using a mix of SASS for easier readability and CSS for easier changability
 
+// Imports for carousel
+@import '../node_modules/slick-carousel/slick/slick.css';
+@import '../node_modules/slick-carousel/slick/slick-theme.css';
+
+// Clip width (here so it can cascade to media queries)
+$front-width: 30px;
+$back-width: 10px;
+
 // Colors
 // BG Color
 $desat-blue: #262136;
+
+// Text Body
+$halite-blue: #081646;
 
 // Gradient Colors
 $pastel-green: #7BF0BA;
@@ -16,6 +27,12 @@ $black: #000000;
 $white: #FFFFFF;
 $off-white: #F6F8FA;
 $grey: #D0D9E2;
+
+// Carousel Backclip
+$muzli: #CC7D3B;
+
+// Nav bar line
+$ele-indigo: #6F619E;
 
 // BH9 Colors
 $darker-blue: #081646;
@@ -69,6 +86,7 @@ $blue: #1447C8;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+    line-height: 125%;
 
     // Transition all elements on the screen
     // (except FAQ panel, which has conflicting transitions)
@@ -80,20 +98,53 @@ $blue: #1447C8;
 }
 
 body {
+    //margin: 0 auto; // centers all elements
     margin-top: 2rem; // spacing
     background-color: $desat-blue;
     color: $white; // default text color
+    text-align: left;
 }
 
 h1 {
-    font-size: 4rem;
-    text-align: center;
-    font-weight: 600; // semi-bold
+    font-size: 5.64rem;
+    font-weight: 500; // semi-bold
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    padding-bottom: 1rem;
+}
+
+h3 {
+    font-size: 23px;
+    font-weight: 600;
+    line-height: 1.7rem;
+    padding-top: 2.7rem;
 }
 
 p {
     font-size: var(--body-font-size);
     padding-bottom: 1rem;
+    line-height: 133%; // spacing between lines
+
+    &:last-child {
+        padding-bottom: 0;
+    }
+}
+
+a {
+    text-decoration: none;
+    // color: $blue;
+    // border-bottom: 2px solid $blue;
+
+    &:hover, &:focus, &:active {
+        font-weight: bold;
+        text-decoration: none;
+
+        // -webkit-text-fill-color: $off-white;
+        // -moz-text-fill-color: $off-white;
+    }
 }
 
 // Typography
@@ -102,8 +153,8 @@ p {
 }
 
 // Mixins - imported from bh9.scss
-@mixin button-primary {
-    background-color: $blue;
+@mixin button-primary { // main orange button
+    background-color: $orange;
     text-decoration: none;
     user-select: none;
     padding: 1rem 1.5rem;
@@ -112,19 +163,21 @@ p {
     text-transform: uppercase;
     text-align: center;
     display: inline-block;
-    color: $off-white;
+    color: $desat-blue;
     font-size: var(--body-font-size);
     cursor: pointer;
     transition: 0.2s all;
 
     &:hover {
-        background-color: $dark-blue;
+        border: 2px solid $white;
+        background-color: $white;
+        color: $desat-blue;
     }
 
     &:active {
         transform: translateY(4px);
-        color: $off-white;
-        background-color: $darker-blue;
+        color: $desat-blue;
+        background-color: $off-white;
     }
 
     @media screen and (max-width: 900px) {
@@ -132,517 +185,1292 @@ p {
     }
 }
 
-@mixin button-secondary {
+@mixin button-secondary { // "clear" desat-blue button
     @include button-primary;
-    background-color: white;
-    color: $blue;
-    border: 2px solid $blue;
+    background-color: $desat-blue;
+    color: $off-white;
+    border: 2px solid $off-white;
 
     &:hover {
-        color: $off-white;
+        background-color: $white;
+        color: $desat-blue;
     }
 }
 
-// Pre-Reg Layout
-#pre-reg {
+@mixin button-effect($color) {
+    transition: 0.2s all;
+    &:hover {
+        background-color: lighten($color, 5%);
+    }
+    &:active {
+        transform: translateY(4px);
+    }
+}
 
-   display: flex;
-   flex-direction: column;
-   margin: auto;
-   padding-top: 10px;
-   padding-bottom: 10px;
+// Main Site Layout
 
-    .mini-window {
+// Navbar -- adopted from bh-9
+nav {
+    background-color: $desat-blue;
+    border-bottom: 2px solid rgba($ele-indigo, 25%);
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--body-font-size);
+    height: 100px;
+    position: fixed;
+    padding: 0px 130px 0px 8rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
 
-        max-width: 656px;
-        width: 100%;
-        max-height: 316px;
-        margin-top: 90px; // from h1
-        padding-bottom: 10px;
-
+    .top, .right {
         display: flex;
-        flex-wrap: nowrap;
-        flex-direction: column; // top-down order
-        position: relative;
-        border: 3px solid white;
-        flex: 0 0 656px; // no flex grow/shrink; basis at max width
-        z-index: 1;
-        overflow-y: auto; // expands based on screen size
-        background-color: $orange; // default bg in case gradient fails
+        align-items: center;
+    }
 
-         // main message
-        p {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            margin-left: 3rem;
-            color: black;
-            text-align: left;
-            font-size: 1.5rem;
+    .left {
+        flex-grow: 3;
+        margin-left: 1rem; // readjust to center
+        margin-top: 2.5rem;
+    }
+
+    #toggle {
+        margin-right: 2rem;
+        color: $white;
+        font-size: 2rem;
+        width: 2rem;
+        display: none;
+    }
+
+    a {
+        margin-right: 2rem;
+        text-decoration: none;
+        color: $off-white;
+    }
+
+    .link {
+
+        &.active {
             font-weight: bold;
-        }
-
-        // email field and submit button
-        #pre-reg-form { 
-            display: flex;
-            position: relative;
-            flex-wrap: wrap;
-            margin-top: 1rem; // from mini-window.p
-            justify-content: center;
-
-            // elements on same row w/o line break
-            white-space: nowrap;
-
-            // takes up rest of mini window
-            flex-grow: 1;
-        }
-        input[name="email"], input[type="submit"] {
-            display: inline-block;
-            max-height: 43px;
-            height: 100%;
-            justify-self: center;
-            flex: 1 1 auto;
-            
-            margin: 0 5px; // 5 pixels apart left/right
-            font-family: 'Work Sans', sans-serif;
-            position: relative;
-        }
-
-        input[name="email"] {
-            max-width: 438px;
-            width: 438px;
-
-            font-size: 1.3rem;
-            padding-left: 10px;
-            border: 3px white solid;
-            margin-bottom: auto; // fills the rest of the bottom
-
-            &:focus {
-                outline: 3px $desat-blue solid;
-            }
-        }
-
-        input[type="submit"] {
-            max-width: 106px;
-            width: 106px;
-
-            font-size: 1.3rem;
-            border: 3px solid white;
-            opacity: 70%;
+            color: $orange;
+            //border-color: $orange;
 
             &:hover {
-                color: $off-white;
-                background-color: $desat-blue;
+                border-color: $orange;
             }
         }
     }
 
-    .title-bar {
+    #register {
+        @include button-primary;
+    }
 
-        // Main container
-        display: flex;
-        width: 100%;
-        max-height: 42px;
-        position: relative;
-        background-color: $desat-blue;
-        flex-wrap: nowrap;
+    #logo {
+        margin-top: .8rem; // centered
+        width: 150px;
+        border: none;
 
-        z-index: 2;
-        align-items: flex-start;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+// MLH Banner
+#mlh-trust-badge {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 50px;
+    height: 0;
+    z-index: 6;
+}
+
+// Mobile Greyout
+.mobile-grayout {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0.25;
+    z-index: 3;
+    cursor: pointer;
+    display: none;
+}
+
+// Section padding
+section {
+    padding-top: 190px; // Set up to avoid nav overlap when linked
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+
+// Hero
+#hero {
+    //margin: 0 auto; // centers
+    display: flex;
+    //justify-content: space-between;
+    //align-items: center;
+    justify-content: center;
+    flex-flow: row nowrap;
+    width: auto;
+
+    // positioning
+    background-image: url("../assets/bh10/main-site/2-hero/colorfullines-hero.svg");
+    background-repeat: no-repeat;
+    background-position: 850px 170px;
+
+    #hero-content {
+        width: max-content;
+        margin-right: 1rem;
+        padding-bottom: 120px;
+
+        h3:not(h3:last-of-type) {
+            padding-bottom: 0;
+        }
+
+        h3:last-of-type {
+            padding-bottom: 1.5rem;
+        }
+
+        // Fading in and out text
+        .text-show {
+            color: white;
+            opacity: 1;
+            transition: all 1s ease;
+        }
+
+        .text-fadeout {
+            color: $desat-blue;
+            opacity: 0;
+            transition: all 1s ease;
+        }
+
+        .shed-link {
+            text-decoration: none;
+            width: max-content;
+            border-bottom: 2px solid white;
+        }
+
+        #hero-buttons {
+            display: flex;
+            max-width: fit-content;
+            align-items: left;
+            padding-right: 11rem;
+
+            #login {
+                @include button-secondary;
+                margin-right: 2rem;
+            }
+
+            #discord {
+                @include button-secondary;
+            }
+        }
         
-        // Title text box (inherits from .mini-window.p)
-        .title {
-            font-weight: 600; // semi-bold
-            bottom: 58px;
-            right: 25px;
-            position: relative;
-            white-space: nowrap; // no overflow when shrinked
-            flex-basis: 500px; // takes up most space in flex
-            overflow: hidden;
+        #register {
+            @include button-primary();
+            width: 64%;
+            margin-top: 1rem;
+        }
+    }
+
+    #graphicwrap {
+        border: 2px solid #ffffff;
+        width: max-content;
+        height: auto;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url("../assets/bh10/main-site/2-hero/colorfullines-hero.svg");
+    }
+
+    #rickygraphic, #linegraphic {
+        position: relative;
+    }
+
+    #rickygraphic {
+        position: relative;
+        //transform: translateY(15rem);
+        //background-image: url("../assets/bh10/main-site/2-hero/colorfullines-hero.svg");
+    }
+
+    #linegraphic {
+        position: relative;
+        z-index: -1;
+    }
+}
+
+// Photo Carousel
+
+.carousel {
+    padding: 120px 0px; // Set up to avoid nav overlap when linked
+    //padding-top: 240px;
+    flex-flow: column nowrap;
+    justify-content: center;
+    max-width: 100%;
+    margin: 0 auto;
+
+    .slick-list {
+        // Slider depends on having the overflow-x hidden,
+        // CSS (per spec) doesn't allow separate overflow-y and x.
+        // So, we add some padding to cheat it.
+        // (https://css-tricks.com/popping-hidden-overflow/)
+        padding-top: 60px !important; // Overrides slick.css
+        margin-top: -60px;
+        overflow: hidden;
+    }
+
+    .slick-slide {
+        $slide-size: 280.19px; // smaller slides
+        height: $slide-size;
+        margin-right: 20px; // Same margin as wire top calculation
+
+        &:focus {
+            outline: none;
+        }
+
+        .wire {
+            position: absolute;
+            width: 200%;
+            margin: 0;
+            height: 15px;
+            background: white;
+            top: -(15px + 20px); // Emphasize 20px margin on 15px height
+            z-index: 2;
+        }
+
+        // Offset clips above the carousel image
+        // Pos: abs because pos: rel causes the two clips,
+        // despite having different offsets,
+        // to interfere with each other when trying to adjust their offset.
+        .front-clip, .back-clip {
+            position: absolute;
+            top: -60px;
+        }
+
+        .front-clip {
+            // Front clip: center left edge, then center the clip itself.
+            margin-left: calc($slide-size / 2) - calc($front-width / 2);
+            width: $front-width;
+            height: 80px;
+            background-color: $orange;
             z-index: 3;
         }
 
-        #minimize, #maximize, #close {
-            padding: 0;
-            align-self: flex-end;
-            margin-right: auto;
-            position: relative;
-            margin: 10px; // spaced 10 pixels apart
-            margin-bottom: 8px;
+        .back-clip {
+            width: $back-width;
+            height: 60px;
+            background-color: $muzli;
+            // Back clip: center left edge, then center the clip itself,
+            // then do left offset from top clip
+            margin-left: calc($slide-size / 2) - calc($front-width / 2) - $back-width;
+            margin-top: 10px; // Vertical offset from top clip
+            z-index: 0;
         }
 
-        #minimize {
-            padding-bottom: 5px; // centered on title-bar
+        img {
+            position: relative;
+            top: 0;
+            width: $slide-size;
+            height: $slide-size;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 2;
+
+            &:hover {
+                filter: brightness(125%);
+            }
         }
     }
 
-    // Masks the background from behind
-    #star-deco {
+    .slick-arrow {
+        width: 60px;
+        height: 60px;
+        background-color: $desat-blue;
+        border: 2px solid #A3A9CA;
+        box-sizing: border-box;
+        border-radius: 50%;
+        // slick-theme has a transform we don't need!
+        transform: none;
+        @include button-effect($orange); // changed to orange color
+    }
 
-        padding: 0;
-        margin: 0;
+    // Make sure these appear over the slides!
+    .slick-prev, .slick-next {
+        z-index: 3;
+    }
 
-        width: 100%;
-        height: auto;
-        order: 1;
-        z-index: -1;
-        height: 100%;
+    // Use FontAwesome as pseudo-element so we don't
+    // have to fork slick-carousel.
+    // (https://fontawesome.com/how-to-use/on-the-web/advanced/css-pseudo-elements)
+    .slick-prev::before, .slick-next::before {
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+    }
 
-        position: absolute;
-        
-        align-self: center;
-        overflow: hidden; // prevents increasing scroll with transform
-        flex-wrap: nowrap;
+    .slick-prev {
+        left: 1%;
 
-        #blue-star, #orange-star, #purple-star, #gradient-star-4pt, #gradient-star-7pt {
-            position: relative;
-            max-width: 9rem; // consistent size with all elts
-        }
-
-        // Positions are adjusted from a center column
-
-        #blue-star {
-            right: 440px;
-            top: 270px;
-            rotate: 15deg;
-        }
-
-        #orange-star {
-            top: 30px;
-            left: 410px;
-            rotate: 10deg;
-        }
-
-        #purple-star {
-            top: 260px;
-            left: 496px;
-            rotate: -45deg;
-        }
-
-        #gradient-star-4pt {
-            bottom: 10px;
-            left: 345px;
-            rotate: 15deg;
-        }
-
-        #gradient-star-7pt {
-            bottom: 20px;
-            right: 320px;
-            rotate: 15deg;
+        &::before {
+            content: "\f060";
         }
     }
 
-    footer {
-        max-width: 100%;
-        max-height: 100%;
-        padding-top: 3rem;
-        font-weight: bold;
-        text-align: center;
-        line-height: 3;
+    .slick-next {
+        right: 1%;
+
+        &::before {
+            content: "\f061";
+        }
+    }
+
+}
+
+#modal {
+    display: none;
+    position: fixed;
+    cursor: pointer;
+    z-index: 100;
+    padding: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(black, 0.9);
+}
+
+#modal-content {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    cursor: default;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from { transform: scale(0); }
+    to   { transform: scale(1); }
+}
+
+#close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color:white;
+    font-size: 1.5em;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#close:hover,
+#close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+// About
+
+#arrowgraphic { // arrow graphic
+    position: relative;
+}
+
+#about {
+    margin-top: 60px;
+    // margin-left: unset;
+    // margin-right: unset;
+    padding-top: 0px; // overrides section inheritance
+    display: flex;
+    align-items: left;
+    justify-content: left;
+
+    // #about-text {
+    //     display: inline-block;
+    //     text-align: left;
+    // }
+
+    #about-cards {
+        display: flex;
+        //justify-content: left;
+        margin: 2rem 0rem;
+
+        #about-text {
+
+            h2 {
+                font-size: 42px;
+            }
+
+            p {
+                font-size: 21px;
+            }
+        }
+
+        .about-card-space {
+            position: relative;
+
+            .about-card {
+                position: relative;
+                flex-direction: column;
+                background-color: white;
+                border: 5px solid $light-purple;
+                border-radius: 6px;
+                width: 55%;
+
+                .about-header {
+                    position: relative;
+                    flex-direction: row;
+                    border-bottom: 5px solid $light-purple;
+                    max-width: 100%;
+                    height: 20%;
+
+                    #blue4pt {
+                        position: absolute;
+                        top: 60px;
+                        right: 200px;
+                    }
+
+                    h3 {
+                        font-size: 28px;
+                        //margin-bottom: 12rem;
+                        margin-left: 30px;
+                        font-weight: 600;
+                        color: $halite-blue;
+                        width: fit-content;
+                        z-index: 4;
+
+                        line-height: 18px; // allows border-bottom to shift up
+                        border-bottom: 14px solid $pastel-green;
+                    }
+                }
+            }
+
+            .about-end { // accomodates the orange star on bottom
+                position: relative;
+                flex-direction: row;
+                margin-top: -3rem; // allows overlap on about card
+                max-width: 100%;
+                height: 10%;
+
+                #orange6pt { // enlargened and fixed
+                    position: absolute;
+                    width: 160px;
+                    height: auto;
+                }
+            }
+        }
+            
+        p {
+            padding: 20px;
+            color: $halite-blue;
+        }
+    }
+
+    // By The Numbers
+
+    #about-stats {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        #stats-content {
+            width: 50%;
+
+            // #stats {
+            //     display: flex;
+            //     justify-content: space-between;
+            //     flex-wrap: wrap;
+
+            //     div {
+            //         display: flex;
+            //         flex-direction: row;
+            //         padding-right: 20px;
+
+            //         .img { // star attributes
+            //             display: absolute;
+            //         }
+
+            //         p:first-of-type {
+            //             padding-bottom: 0;
+            //         }
+            //     }
+            // }
+
+            #stats {
+                display: grid; 
+                // justify-content: space-between;
+                // flex-wrap: wrap;
+                grid-template-columns: repeat(5, 1fr);
+                align-items: end;
+                grid-auto-rows: 220px;
+
+                div {
+                    display: flex;
+                    flex-direction: row;
+                    padding-right: 20px;
+
+                    .img { // star attributes
+                        display: absolute;
+                    }
+
+                    p:first-of-type {
+                        padding-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        #green-corner, #purple-corner {
+            max-width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        #brick-graphic {
+            //max-width: 70%;
+        }
+    }
+}
+
+// FAQ
+#faq {
+
+    #faq-title {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: left;
+
+        #faq-title-content {
+            margin-right: 3rem;
+        }
+    }
+
+    #faq-cards {
+        margin-top: 40px;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+
+        // TODO: This can be cleaner.
+        $card-m: 20px;
+
+        &-left {
+            width: calc(50% - (#{$card-m} / 2));
+            margin-right: calc($card-m / 2);
+        }
+
+        &-right {
+            width: calc(50% - (#{$card-m} / 2));
+            margin-left: calc($card-m / 2);
+        }
+
+        .card {
+            width: 100%;
+            margin-bottom: $card-m;
+            border-radius: 6px;
+            background-color: $desat-blue;
+            border: 1px solid $white;
+
+            &:active {
+                transform: none;
+            }
+
+            .accordion-header {
+                background-color: transparent;
+                cursor: pointer;
+                outline: none;
+                color: $white;
+                font-weight: 600;
+                text-align: left;
+                padding: 20px 30px;
+                border: none;
+                border-radius: 0px 0px 6px 6px; // making bottom corners round and top corners filled
+                width: 100%;
+                font-size: var(--body-font-size);
+                font-weight: bold;
+
+                .fa-plus {
+                    margin-right: 10px;
+
+                    &-pastel-green {
+                        color: $pastel-green;
+                    }
+
+                    &-teal {
+                        color: $teal;
+                    }
+
+                    &-orange {
+                        color: $orange;
+                    }
+                }
+
+                .fa-minus {
+                    margin-right: 10px;
+                    color: $desat-blue;
+                }
+
+                &:hover {
+                    background-color: $white;
+                    border-radius: 0;
+                    color: $desat-blue;
+
+                    .fa-plus {
+                        color: $desat-blue;
+                    }
+                }
+            }
+
+            .panel {
+                display: none; // Toggled in JS
+                padding: 20px 65px; // large side padding aligns with header text
+                background-color: $white;
+
+                p, em {
+                    color: $desat-blue;
+                    line-height: 23px;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+
+        .active .accordion-header {
+            color: $desat-blue;
+            background-color: $white;
+            border: 2px solid $desat-blue;
+            border-radius: 0px 0px 6px 6px; // making bottom corners round and top corners filled
+
+            &:hover {
+                border-radius: 0px 0px 6px 6px; // making bottom corners round and top corners filled
+            }
+        }
+    }
+}
+
+// Sponsors
+#sponsors {
+
+    flex-direction: row;
+    justify-content: space-between;
+
+    #sponsor-content {
+
+        padding-top: 5rem;
         order: 2;
+        z-index: 1;
+        padding-left: 2rem;
+        background-image: url("../assets/bh10/main-site/5-sponsors/coloredLinesSponsors.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        //background-position: right 8rem;
+
+        // Static values to fit the bg
+        width: 1095px;
+        height: 625px;
+
+        h2, p {
+            
+        }
+
+        #sponsor-btns {
+            margin: 1rem 0 2rem;
+            display: flex;
+    
+            #prospectus {
+                @include button-primary();
+                margin-right: 2rem;
+            }
+    
+            #email {
+                @include button-secondary();
+            }
+        }
+
+        // #graphic-bg {
+        //     order: 2;
+        //     z-index: -1;
+        // }
+    }
+
+    // #graphicwrap {
+    //     border: 2px solid #ffffff;
+    //     width: max-content;
+    //     background-repeat: no-repeat;
+    //     background-size: cover;
+    //     background-image: url("../assets/bh10/main-site/5-sponsors/coloredLinesSponsors.svg");
+    // }
+}
+
+// Contact
+#contact {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    min-height: auto;
+
+    #contact-content {
+        order: 1;
+        //width: 50%;
+        padding-right: 20px;
+        background-image: url("../assets/bh10/main-site/6-contact/coloredLinesContact.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        // Static values to fit the bg
+        width: 633px;
+        height: 625px;
 
         a {
-            text-decoration: underline;
-            text-decoration-color: white;
-            color: white;
-        }
-
-        a:hover {
-            color: $orange;
+            border-bottom: 2px solid white;
         }
     }
-}
 
-// Screen Scaling
-// Stars relocate in different spots for mobile styling
-// Tablet Styling
-@media screen and (max-width: 1200px) {
+    // #graphicwrap {
+    //     border: 2px solid #ffffff;
+    //     width: max-content;
+    //     background-repeat: no-repeat;
+    //     background-size: contain;
+    //     background-image: url("../assets/bh10/main-site/6-contact/coloredLinesContact.svg");
+    // }
 
-    h1 {
-         font-size: 3.6rem;
-    }
+    // #line-graphic {
+    //     order: 1;
+    //     z-index: -1;
+    // }
 
-    #pre-reg {
+    #contact-socials {
+        order: 2;
+        align-self: flex-end;
+        background-image: url("../assets/bh10/main-site/6-contact/laptopContact.svg");
+        width: 638px;
+        max-width: 100%;
+        height: 458px;
+        margin-bottom: -2px; // Gets rid of gap between svg and footer
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        padding: 1rem 2.8rem 5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: $desat-blue;
 
-        .mini-window {
-    
-            width: 98%;
+        #social-icons {
+            display: flex;
+            position: relative;
+            flex-wrap: wrap;
 
-            input[name="email"] {
-                width: 95%;
-            }
-            
-        }
-
-        #star-deco {
-
-            #blue-star {
-                right: 390px;
-                top: 280px;
-                rotate: 15deg;
-            }
-    
-            #orange-star {
-                top: 30px;
-                left: 340px;
-                rotate: 10deg;
-            }
-    
-            #purple-star {
-                top: 260px;
-                left: 426px;
-                rotate: -45deg;
-            }
-    
-            #gradient-star-4pt {
-                bottom: 10px;
-                left: 275px;
-                rotate: 15deg;
-            }
-    
-            #gradient-star-7pt {
-                bottom: 20px;
-                right: 250px;
-                rotate: 15deg;
+            img, p {
+                margin: 1rem;
             }
         }
     }
 }
 
-@media screen and (max-width: 1075px) {
+// Scroll Register End
+#register-end {
+    margin-bottom: 15rem;
 
     h1 {
-        font-size: 3.2rem;
+        font-size: 100.29px;
+        margin-bottom: 2rem;
     }
 
-    #pre-reg {
-    
-        .mini-window {
+    #register {
+        @include button-primary();
+        padding: 14px 113px;
+    }
+}
 
-            width: 96%;
+// Footer
+footer {
+    padding: 2rem 0rem;
+    display: flex;
+    justify-content: space-between;
 
-            input[name="email"] {
-                width: 70%;
-            }
-            
-        }
+    p {
+        line-height: 2.5rem;
+        text-decoration: none;
+    }
 
+    #footer-left {
+        padding-right: 2rem;
+    }
 
-        #star-deco {
+    #footer-right {
+        display: flex;
+        justify-content: space-between;
 
-            #blue-star {
-                right: 320px;
-                top: 280px;
-                rotate: 15deg;
-            }
-    
-            #orange-star {
-                top: 30px;
-                left: 290px;
-                rotate: 10deg;
-            }
-    
-            #purple-star {
-                top: 260px;
-                left: 356px;
-                rotate: -45deg;
-            }
-    
-            #gradient-star-4pt {
-                bottom: 10px;
-                left: 225px;
-                rotate: 15deg;
-            }
-    
-            #gradient-star-7pt {
-                bottom: 20px;
-                right: 200px;
-                rotate: 15deg;
+        p {
+            padding-bottom: 0;
+
+            &:not(p:last-of-type) {
+                padding-right: 1rem;
             }
         }
     }
 }
 
-// Mobile Styling
-@media screen and (max-width: 800px) {
+// Screen Sizes
+@media screen and (max-width: 1500px) {
+    // FAQ
+    #faq {
+        #faq-title {
+            flex-direction: column;
+            align-items: flex-start;
+        }
 
-    h1 {
-        font-size: 2.8rem;
+        #faq-cards {
+            flex-direction: column;
+
+            &-left, &-right {
+                margin: 0;
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1220px) {
+    // Nav
+    nav {
+        padding: 0px 85px 0px 5rem;
     }
 
-    #pre-reg {
-    
-        .mini-window {
+    // Section padding
+    section {
+        padding: 120px 5rem 0px; // Set up to avoid nav overlap when linked
+    }
 
-            width: 94%;
-            height: 100%;
+    // Hero
+    #hero {
+        flex-direction: column;
+        align-items: center;
 
-            // Window adjustment to fit to screen
-            p {
-                padding-top: 1rem;
-                margin-left: 1rem;
+        #hero-content {
+            width: auto;
+            margin-right: 0;
+            flex-basis: auto;
+            text-align: center;
+        }
+    }
+
+    // About
+    #about #about-content #about-buttons {
+        width: 100%;
+    }
+
+    // // Leadership
+    // #leadership #team {
+    //     display: grid;
+    //     grid-template-columns: 1fr 1fr 1fr;
+    // }
+
+    // Footer
+    footer #footer-right {
+        flex-direction: column;
+        text-align: right;
+
+        p:not(p:last-of-type) {
+            padding-right: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 955px) {
+    // Nav
+    nav {
+        height: 70px;
+        padding: 0px 3.5rem;
+
+        #toggle {
+            display: block;
+        }
+
+        #logo {
+            width: 60px;
+        }
+
+        .link, #login {
+            display: none;
+        }
+    }
+
+    .show-nav {
+        height: 100vh;
+        width: 50vw;
+        min-width: max-content;
+        padding: 0px 3.5rem;
+        border-bottom: none;
+        border-right: 2px solid rgba($ele-indigo, 25%);
+        flex-direction: column;
+        justify-content: flex-start;
+        z-index: 4;
+
+        .top {
+            height: 68px;
+        }
+
+        .left, .right {
+            align-items: flex-start;
+            margin-top: 2rem;
+
+            a {
+                margin-right: 0rem;
+                margin-top: 2rem;
+            }
+        }
+
+        .left {
+            flex-direction: column;
+            flex-grow: 0;
+            order: 2;
+        }
+
+        .right {
+            flex-direction: column-reverse;
+            order: 1;
+        }
+
+        .link, #login {
+            display: block;
+        }
+    }
+
+    .show-gray {
+        display: block;
+    }
+
+    // MLH Banner
+    #mlh-trust-badge {
+        width: 50px;
+    }
+
+    // Section padding
+    section {
+        padding: 100px 3.5rem 0px; // Set up to avoid nav overlap when linked
+    }
+
+    // Hero
+    #hero #hero-content #hero-buttons {
+        flex-direction: column;
+
+        #login {
+            margin: 0rem 0rem 1rem;
+            width: 100%;
+        }
+
+        #register {
+            width: 100%;
+        }
+    }
+
+    // About
+    #about {
+        #about-cards {
+            flex-direction: column;
+
+            .about-card {
+                width: 100%;
+
+                &:not(.about-card:last-of-type) {
+                    margin-bottom: 2rem;
+                }
+            }
+        }
+
+        #about-stats {
+            flex-direction: column;
+
+            #stats {
+                grid-template-columns: repeat(3, 1fr);
+                align-items: end;
+                grid-auto-rows: 220px;
+            }
+
+            #stats-content {
+                width: 100%;
+            }
+
+            // video {
+            //     max-width: 100%;
+            //     padding-top: 2rem;
+            // }
+        }
+    }
+
+    // // Prizes
+    // #prizes #prizes-card > .content .text .title {
+    //     letter-spacing: 0.5rem;
+    // }
+}
+
+@media screen and (max-width: 900px) {
+    // Variables
+    :root {
+        --body-font-size: 1rem;
+    }
+
+    // Typography
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.35rem;
+    }
+
+    // Post
+    #post #prizes-ricky {
+        width: 90%;
+    }
+
+    // About
+    #about #about-content {
+        p {
+            font-size: 1em;
+        }
+
+        #about-buttons {
+            flex-direction: column;
+            width: 60%;
+
+            a {
+                margin-left: 0;
+            }
+        }
+    }
+
+    // Schedule
+    #schedule {
+        display: flex;
+        flex-flow: column;
+
+        #schedule-left .day {
+            width: calc(50% - 0.75rem);
+
+            &:first-of-type {
                 margin-right: 1rem;
             }
+        }
 
-            .title-bar {
+        #schedule-calendar {
+            margin-top: 1rem;
+            width: 100%;
+        }
+    }
 
-                .title {
-                    right: 5px;
-                    bottom: 42px;
-                }
+    // FAQ
+    #faq #faq-cards {
+        margin-top: 20px;
+
+        .card {
+            .accordion-header {
+                padding: 10px 20px;
             }
+
+            .panel {
+                padding: 20px 20px 10px;
+            }
+        }
+    }
+
+    // // Prizes
+    // #prizes {
+    //     $tape-offset: 12px;               // how far into the card is the tape placed?
+    //     $overflow-size: 35px;             // how far does the outer card go into the section margins?
+    //     $inner-card-overflow-size: 20px;  // how far does the inner card go into the outer card's margins?
+
+    //     #prizes-card {
+    //         padding: $overflow-size $overflow-size ($overflow-size + 40px);
+
+    //         & > .content {
+    //             margin-bottom: 30px;
+
+    //             .graphic {
+    //                 display: none;
+    //             }
+
+    //             .text {
+    //                 row-gap: 15px;
+    //             }
+    //         }
+
+    //         .tape {
+    //             height: 12px;
+    //             width: 50px;
     
-            input[name="email"] {
-                width: 60%;
-                font-size: 1.15rem;
-                margin-left: 12px;
+    //             &.top-left {
+    //                 left: $tape-offset;
+    //                 top: $tape-offset;
+    //             }
+    
+    //             &.top-right {
+    //                 right: $tape-offset - 50px;
+    //                 top: $tape-offset;
+    //             }
+    
+    //             &.bottom-left {
+    //                 left: $tape-offset;
+    //                 bottom: $tape-offset - 12px;
+    //             }
+    
+    //             &.bottom-right {
+    //                 right: $tape-offset - 50px;
+    //                 bottom: $tape-offset - 12px;
+    //             }
+    //         }
+
+    //         #inner-prizes-card {
+    //             margin-left: -$inner-card-overflow-size;
+    //             padding: $inner-card-overflow-size;
+    //             width: calc(100% + (2 * #{$inner-card-overflow-size}));
+
+    //             .content {
+    //                 flex-direction: column;
+    //                 row-gap: 20px;
+    //             }
+    //         }
+
+    //         #prizes-corner-text {
+    //             font-size: 0.75rem;
+    //             right: 20px;
+    //         }
+    //     }
+    // }
+
+    // Sponsors
+    #sponsors {
+        #sponsor-btns {
+            flex-flow: column;
+            width: max-content;
+            margin: auto;
+
+            #prospectus {
+                margin: 0rem 0rem 1rem;
+                padding: 1rem 3rem;
             }
         }
 
-        #star-deco {
-
-            #blue-star {
-                right: 270px;
-                top: 150px;
-                rotate: 15deg;
-            }
-    
-            #orange-star {
-                top: 70px;
-                left: 150px;
-                rotate: 10deg;
-            }
-    
-            #purple-star {
-                top: 260px;
-                left: 306px;
-                rotate: -45deg;
-            }
-    
-            #gradient-star-4pt {
-                top: 260px;
-                left: 160px;
-                rotate: 15deg;
-            }
-    
-            #gradient-star-7pt {
-                bottom: 20px;
-                right: 150px;
-                rotate: 15deg;
-            }
+        .logo-group {
+            padding: 1rem 0rem;
         }
+    }
+
+    // Leadership
+    // #leadership #team {
+    //     display: grid;
+    //     grid-template-columns: 1fr 1fr;
+
+    //     .leader .leader-role {
+    //         font-size: 0.9rem;
+    //     }
+    // }
+
+    // Contact
+    #contact {
+        flex-direction: column;
+
+        #contact-content {
+            width: 100%;
+            padding-right: 0px;
+        }
+
+        #contact-socials {
+            margin: 2rem auto -2px;
+            max-width: 75%;
+            width: 75%;
+            height: calc((100vw - 7rem) * 0.56); // should be the same as 75% of the current width
+            // Essentially: (100vw - section padding to get 100% width) * 0.75 to get the 75% width * 0.75 for 75% of 75% width
+        }
+    }
+
+    // Footer
+    footer p {
+        line-height: 2rem;
     }
 }
 
-// Case for smaller phones
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 650px) {
+    // About
+    #about #stats-content #stats {
+        flex-direction: column;
 
-    #pre-reg {
-
-        .mini-window {
-
-            max-height: 340px; // increases size of the bottom of window
-
-            input[name="email"], input[type="submit"] {
-                display: block; // allows wrap to bottom
-                max-height: 45%;
-                margin-bottom: 10px;
-            }
-
-            input[name="email"] {
-                width: 130%; // increased size of field
-                font-size: .95rem;
-                right: 45px; // centered
-            }
-
-            input[type="submit"] {
-                margin-left: 3.05rem; // centered in mini-window
-            }
-
+        div {
+            padding: 0px 0px 20px;
         }
-
     }
 
-}
+    // Schedule
+    #schedule #schedule-left .day {
+        width: 100%;
 
-// Galaxy Fold Styling
-@media screen and (max-width: 300px) {
-
-    h1 {
-        font-size: 2.5rem;
+        &:first-of-type {
+            margin-right: 0rem;
+        }
     }
 
-    #pre-reg {
-    
-        .mini-window {
+    // Prizes
+    // #prizes #prizes-card {
+    //     padding: 20px 20px 60px;
 
-            width: 92%;
-            max-height: 350px; // increases size of the bottom of window
-            margin-top: 60px;
+    //     #inner-prizes-card {
+    //         margin-left: 0;
+    //         width: 100%;
+    //     }
+    // }
 
-            // Window adjustment to fit to screen
-            p {
-                padding-top: 1rem;
-                margin-left: 1rem;
-                font-size: 1.3rem;
-            }
+    // // Leadership
+    // #leadership #team {
+    //     display: grid;
+    //     grid-template-columns: 1fr;
+    // }
 
-            .title-bar {
+    // Contact
+    #contact #contact-socials {
+        max-width: 100%;
+        width: 100%;
+        justify-content: flex-start;
+        padding: 0;
+        margin: 2rem 0;
+        background-image: none;
+        height: auto;
 
-                .title {
-                    right: 5px;
-                    bottom: 40px;
-                }
-            }
-    
-            input[name="email"] {
-                width: 100%;
-                font-size: .85rem;
-                margin-left: 0;
-                right: 0px; // centering
-            }
-
-            input[type="submit"] {
-                margin-left: 2.2rem; // centered in mini-window
-            }
+        #social-icons a i {
+            font-size: 2rem;
         }
+    }
 
-        #star-deco {
+    // Footer
+    footer {
+        flex-direction: column;
 
-            #blue-star {
-                right: 270px;
-                top: 150px;
-                rotate: 15deg;
-            }
-    
-            #orange-star {
-                top: 70px;
-                left: 150px;
-                rotate: 10deg;
-            }
-    
-            #purple-star {
-                top: 260px;
-                left: 306px;
-                rotate: -45deg;
-            }
-    
-            #gradient-star-4pt {
-                top: 260px;
-                left: 160px;
-                rotate: 15deg;
-            }
-    
-            #gradient-star-7pt {
-                bottom: 20px;
-                right: 150px;
-                rotate: 15deg;
-            }
-        }
-
-        footer {
-            font-size: .9rem;
+        #footer-right {
+            text-align: left;
         }
     }
 }
-
-
