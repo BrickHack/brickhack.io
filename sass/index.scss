@@ -1,6 +1,7 @@
 // Variables
 // Using a mix of SASS for easier readability and CSS for easier changability
 
+
 // Imports for carousel
 @import '../node_modules/slick-carousel/slick/slick.css';
 @import '../node_modules/slick-carousel/slick/slick-theme.css';
@@ -21,6 +22,8 @@ $pastel-green: #7BF0BA;
 $teal: #44D4D2;
 $light-purple: #C2A3FD;
 $orange: #FF9C4A;
+
+// Neutral Colors
 
 // Neutral Colors
 $black: #000000;
@@ -81,7 +84,9 @@ $blue: #1447C8;
 }
 
 // General Styles -- from bh9.scss
+// General Styles -- from bh9.scss
 * {
+    margin: 0 auto; // centers all elements
     margin: 0 auto; // centers all elements
     padding: 0;
     box-sizing: border-box;
@@ -1140,61 +1145,35 @@ footer {
                 margin-top: 2rem;
             }
         }
+    }
+}
 
-        .left {
-            flex-direction: column;
-            flex-grow: 0;
-            order: 2;
-        }
+// Mobile Styling
+@media screen and (max-width: 800px) {
 
-        .right {
-            flex-direction: column-reverse;
-            order: 1;
-        }
-
-        .link, #login {
-            display: block;
-        }
+    h1 {
+        font-size: 2.8rem;
     }
 
-    .show-gray {
-        display: block;
-    }
+    #pre-reg {
+    
+        .mini-window {
 
-    // MLH Banner
-    #mlh-trust-badge {
-        width: 50px;
-    }
+            width: 94%;
+            height: 100%;
 
-    // Section padding
-    section {
-        padding: 100px 3.5rem 0px; // Set up to avoid nav overlap when linked
-    }
+            // Window adjustment to fit to screen
+            p {
+                padding-top: 1rem;
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
 
-    // Hero
-    #hero #hero-content #hero-buttons {
-        flex-direction: column;
+            .title-bar {
 
-        #login {
-            margin: 0rem 0rem 1rem;
-            width: 100%;
-        }
-
-        #register {
-            width: 100%;
-        }
-    }
-
-    // About
-    #about {
-        #about-cards {
-            flex-direction: column;
-
-            .about-card {
-                width: 100%;
-
-                &:not(.about-card:last-of-type) {
-                    margin-bottom: 2rem;
+                .title {
+                    right: 5px;
+                    bottom: 42px;
                 }
             }
         }
@@ -1262,39 +1241,23 @@ footer {
             a {
                 margin-left: 0;
             }
-        }
-    }
-
-    // Schedule
-    #schedule {
-        display: flex;
-        flex-flow: column;
-
-        #schedule-left .day {
-            width: calc(50% - 0.75rem);
-
-            &:first-of-type {
-                margin-right: 1rem;
+    
+            #purple-star {
+                top: 260px;
+                left: 306px;
+                rotate: -45deg;
             }
-        }
-
-        #schedule-calendar {
-            margin-top: 1rem;
-            width: 100%;
-        }
-    }
-
-    // FAQ
-    #faq #faq-cards {
-        margin-top: 20px;
-
-        .card {
-            .accordion-header {
-                padding: 10px 20px;
+    
+            #gradient-star-4pt {
+                top: 260px;
+                left: 160px;
+                rotate: 15deg;
             }
-
-            .panel {
-                padding: 20px 20px 10px;
+    
+            #gradient-star-7pt {
+                bottom: 20px;
+                right: 150px;
+                rotate: 15deg;
             }
         }
     }
