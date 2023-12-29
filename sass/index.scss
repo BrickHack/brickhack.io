@@ -318,13 +318,12 @@ section {
 
 // Hero
 #hero {
-    //margin: 0 auto; // centers
     display: flex;
-    //justify-content: space-between;
-    //align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     flex-flow: row nowrap;
     width: auto;
+    padding: 120px;
 
     // positioning
     background-image: url("../assets/bh10/main-site/2-hero/colorfullines-hero.svg");
@@ -332,9 +331,7 @@ section {
     background-position: 850px 170px;
 
     #hero-content {
-        width: max-content;
-        margin-right: 1rem;
-        padding-bottom: 120px;
+        margin: 0;
 
         h3:not(h3:last-of-type) {
             padding-bottom: 0;
@@ -366,8 +363,8 @@ section {
         #hero-buttons {
             display: flex;
             max-width: fit-content;
-            align-items: left;
-            padding-right: 11rem;
+            justify-content: flex-start;
+            margin: 0;
 
             #login {
                 @include button-secondary;
@@ -395,14 +392,13 @@ section {
         background-image: url("../assets/bh10/main-site/2-hero/colorfullines-hero.svg");
     }
 
-    #rickygraphic, #linegraphic {
+     #linegraphic {
         position: relative;
     }
 
     #rickygraphic {
-        position: relative;
-        //transform: translateY(15rem);
-        //background-image: url("../assets/bh10/main-site/2-hero/colorfullines-hero.svg");
+        max-width: 100%;
+        margin: 0 auto;
     }
 
     #linegraphic {
@@ -614,24 +610,26 @@ section {
     //     text-align: left;
     // }
 
+    #about-text {
+        margin: 0 120px;
+
+        h2 {
+            font-size: 42px;
+        }
+
+        p {
+            font-size: 21px;
+        }
+    }
+
     #about-cards {
         display: flex;
         //justify-content: left;
-        margin: 2rem 0rem;
-
-        #about-text {
-
-            h2 {
-                font-size: 42px;
-            }
-
-            p {
-                font-size: 21px;
-            }
-        }
+        margin: 2rem 120px 5rem 120px;
 
         .about-card-space {
             position: relative;
+            width: 50%;
 
             .about-card {
                 position: relative;
@@ -639,7 +637,8 @@ section {
                 background-color: white;
                 border: 5px solid $light-purple;
                 border-radius: 6px;
-                width: 55%;
+                width: 95%;
+                margin: 0;
 
                 .about-header {
                     position: relative;
@@ -647,11 +646,16 @@ section {
                     border-bottom: 5px solid $light-purple;
                     max-width: 100%;
                     height: 20%;
+                    padding: 2rem 0rem;
+
+                    h3 {
+                        padding: 0;
+                    }
 
                     #blue4pt {
                         position: absolute;
-                        top: 60px;
-                        right: 200px;
+                        top: -60px;
+                        right: -60px;
                     }
 
                     h3 {
@@ -672,7 +676,8 @@ section {
             .about-end { // accomodates the orange star on bottom
                 position: relative;
                 flex-direction: row;
-                margin-top: -3rem; // allows overlap on about card
+                margin-top: -4rem; // allows overlap on about card
+                margin-left: -6rem;
                 max-width: 100%;
                 height: 10%;
 
@@ -696,9 +701,10 @@ section {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin: 0 120px;
 
         #stats-content {
-            width: 50%;
+            width: 75%;
 
             // #stats {
             //     display: flex;
@@ -721,21 +727,17 @@ section {
             // }
 
             #stats {
-                display: grid; 
-                // justify-content: space-between;
-                // flex-wrap: wrap;
-                grid-template-columns: repeat(5, 1fr);
-                align-items: end;
-                grid-auto-rows: 220px;
+                display: flex; 
+                justify-content: space-between;
+                flex-wrap: wrap;
+                margin-top: 1rem;
+                gap: 1rem;
+                // grid-template-columns: repeat(5, 1fr);
+                // align-items: end;
+                // grid-auto-rows: 220px;
 
                 div {
-                    display: flex;
-                    flex-direction: row;
-                    padding-right: 20px;
-
-                    .img { // star attributes
-                        display: absolute;
-                    }
+                    margin: 0;
 
                     p:first-of-type {
                         padding-bottom: 0;
@@ -751,13 +753,15 @@ section {
         }
 
         #brick-graphic {
-            //max-width: 70%;
+            max-width: 100%;
+            margin-left: 2rem;
         }
     }
 }
 
 // FAQ
 #faq {
+    margin: 0 120px;
 
     #faq-title {
         display: flex;
@@ -766,6 +770,11 @@ section {
 
         #faq-title-content {
             margin-right: 3rem;
+        }
+
+        #confusedRicky {
+            max-width: 100%;
+            margin-top: 1rem;
         }
     }
 
@@ -1064,7 +1073,7 @@ footer {
 
     // Section padding
     section {
-        padding: 120px 5rem 0px; // Set up to avoid nav overlap when linked
+        padding: 120px 0px 0px; // Set up to avoid nav overlap when linked
     }
 
     // Hero
@@ -1074,9 +1083,13 @@ footer {
 
         #hero-content {
             width: auto;
-            margin-right: 0;
             flex-basis: auto;
             text-align: center;
+            margin-bottom: 2rem;
+
+            #hero-buttons { 
+                margin: 0 auto;
+            }
         }
     }
 
@@ -1125,12 +1138,13 @@ footer {
         height: 100vh;
         width: 50vw;
         min-width: max-content;
-        padding: 0px 3.5rem;
+        padding: 0px;
         border-bottom: none;
         border-right: 2px solid rgba($ele-indigo, 25%);
         flex-direction: column;
         justify-content: flex-start;
         z-index: 4;
+        margin: 0;
 
         .top {
             height: 68px;
@@ -1138,11 +1152,57 @@ footer {
 
         .left, .right {
             align-items: flex-start;
-            margin-top: 2rem;
+            margin: 2rem;
 
-            a {
+            .link {
+                display: block;
                 margin-right: 0rem;
                 margin-top: 2rem;
+            }
+        }
+
+        .right .link {
+            margin: 1rem;
+        }
+    }
+
+    #about {
+        #about-cards {
+            flex-direction: column;
+            margin-bottom: 1rem;
+
+            .about-card-space {
+                width: 100%;
+
+                .about-card {
+                    width: 100%;
+
+                    .about-header #blue4pt {
+                        display: none;
+                    }
+                }
+
+                .about-end {
+                    display: none;
+                }
+            }
+
+            .about-card-space:last-of-type {
+                margin-top: 2rem;
+            }
+        }
+
+        #about-stats {
+            flex-direction: column;
+    
+            #stats-content {
+                width: 100%;
+                margin: 0;
+            }
+    
+            #brick-graphic {
+                margin: 1rem 0 0;
+                width: 100px;
             }
         }
     }
@@ -1182,9 +1242,7 @@ footer {
             flex-direction: column;
 
             #stats {
-                grid-template-columns: repeat(3, 1fr);
-                align-items: end;
-                grid-auto-rows: 220px;
+                display: flex;
             }
 
             #stats-content {
