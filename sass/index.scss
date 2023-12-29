@@ -323,7 +323,7 @@ section {
     align-items: center;
     flex-flow: row nowrap;
     width: auto;
-    padding: 120px;
+    padding: 150px 120px 120px;
 
     // positioning
     background-image: url("../assets/bh10/main-site/2-hero/colorfullines-hero.svg");
@@ -1473,7 +1473,7 @@ footer {
 
     // Rest the left-right page margin (hacky)
     #hero {
-        padding: 120px 0 0;
+        padding: 150px 0 0;
         margin-left: 1rem;
         margin-right: 1rem;
     }
