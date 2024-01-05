@@ -243,7 +243,7 @@ function convertDate(date) {
 }
 
 // adopted from https://stackoverflow.com/users/12271569/rick 
-const text = ["Brickhack", "Teamwork", "Creating", "Learning", "Bricks", "Friendship", "Fun!"];
+const text = ["BrickHack", "Teamwork", "Creating", "Learning", "Bricks", "Friendship", "Fun!"];
 let counter = 0;
 
 setInterval(change, 5000);

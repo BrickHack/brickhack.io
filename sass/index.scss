@@ -249,7 +249,7 @@ nav {
     }
 
     a {
-        margin-right: 2rem;
+        margin-right: 1rem;
         text-decoration: none;
         color: $off-white;
     }
@@ -272,7 +272,6 @@ nav {
     }
 
     #logo {
-        margin-top: .8rem; // centered
         width: 150px;
         border: none;
 
@@ -288,7 +287,7 @@ nav {
     display: block;
     position: fixed;
     top: 0;
-    right: 50px;
+    right: 5px;
     height: 0;
     z-index: 6;
 }
@@ -318,13 +317,12 @@ section {
 
 // Hero
 #hero {
-    //margin: 0 auto; // centers
     display: flex;
-    //justify-content: space-between;
-    //align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     flex-flow: row nowrap;
     width: auto;
+    padding: 150px 120px 120px;
 
     // positioning
     background-image: url("../assets/bh10/main-site/2-hero/colorfullines-hero.svg");
@@ -332,9 +330,7 @@ section {
     background-position: 850px 170px;
 
     #hero-content {
-        width: max-content;
-        margin-right: 1rem;
-        padding-bottom: 120px;
+        margin: 0;
 
         h3:not(h3:last-of-type) {
             padding-bottom: 0;
@@ -366,8 +362,9 @@ section {
         #hero-buttons {
             display: flex;
             max-width: fit-content;
-            align-items: left;
-            padding-right: 11rem;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 0;
 
             #login {
                 @include button-secondary;
@@ -382,7 +379,7 @@ section {
         #register {
             @include button-primary();
             width: 64%;
-            margin-top: 1rem;
+            // margin-top: 1rem;
         }
     }
 
@@ -395,14 +392,13 @@ section {
         background-image: url("../assets/bh10/main-site/2-hero/colorfullines-hero.svg");
     }
 
-    #rickygraphic, #linegraphic {
+     #linegraphic {
         position: relative;
     }
 
     #rickygraphic {
-        position: relative;
-        //transform: translateY(15rem);
-        //background-image: url("../assets/bh10/main-site/2-hero/colorfullines-hero.svg");
+        max-width: 100%;
+        margin: 0 auto;
     }
 
     #linegraphic {
@@ -614,24 +610,26 @@ section {
     //     text-align: left;
     // }
 
+    #about-text {
+        margin: 0 120px;
+
+        h2 {
+            font-size: 42px;
+        }
+
+        p {
+            font-size: 21px;
+        }
+    }
+
     #about-cards {
         display: flex;
         //justify-content: left;
-        margin: 2rem 0rem;
-
-        #about-text {
-
-            h2 {
-                font-size: 42px;
-            }
-
-            p {
-                font-size: 21px;
-            }
-        }
+        margin: 2rem 120px 5rem 120px;
 
         .about-card-space {
             position: relative;
+            width: 50%;
 
             .about-card {
                 position: relative;
@@ -639,7 +637,8 @@ section {
                 background-color: white;
                 border: 5px solid $light-purple;
                 border-radius: 6px;
-                width: 55%;
+                width: 95%;
+                margin: 0;
 
                 .about-header {
                     position: relative;
@@ -647,11 +646,16 @@ section {
                     border-bottom: 5px solid $light-purple;
                     max-width: 100%;
                     height: 20%;
+                    padding: 2rem 0rem;
+
+                    h3 {
+                        padding: 0;
+                    }
 
                     #blue4pt {
                         position: absolute;
-                        top: 60px;
-                        right: 200px;
+                        top: -60px;
+                        right: -60px;
                     }
 
                     h3 {
@@ -672,7 +676,8 @@ section {
             .about-end { // accomodates the orange star on bottom
                 position: relative;
                 flex-direction: row;
-                margin-top: -3rem; // allows overlap on about card
+                margin-top: -4rem; // allows overlap on about card
+                margin-left: -6rem;
                 max-width: 100%;
                 height: 10%;
 
@@ -696,9 +701,10 @@ section {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin: 0 120px;
 
         #stats-content {
-            width: 50%;
+            width: 75%;
 
             // #stats {
             //     display: flex;
@@ -721,21 +727,17 @@ section {
             // }
 
             #stats {
-                display: grid; 
-                // justify-content: space-between;
-                // flex-wrap: wrap;
-                grid-template-columns: repeat(5, 1fr);
-                align-items: end;
-                grid-auto-rows: 220px;
+                display: flex; 
+                justify-content: space-between;
+                flex-wrap: wrap;
+                margin-top: 1rem;
+                gap: 1rem;
+                // grid-template-columns: repeat(5, 1fr);
+                // align-items: end;
+                // grid-auto-rows: 220px;
 
                 div {
-                    display: flex;
-                    flex-direction: row;
-                    padding-right: 20px;
-
-                    .img { // star attributes
-                        display: absolute;
-                    }
+                    margin: 0;
 
                     p:first-of-type {
                         padding-bottom: 0;
@@ -751,13 +753,15 @@ section {
         }
 
         #brick-graphic {
-            //max-width: 70%;
+            max-width: 100%;
+            margin-left: 2rem;
         }
     }
 }
 
 // FAQ
 #faq {
+    margin: 0 120px;
 
     #faq-title {
         display: flex;
@@ -767,10 +771,15 @@ section {
         #faq-title-content {
             margin-right: 3rem;
         }
+
+        #confusedRicky {
+            max-width: 100%;
+            margin-top: 1rem;
+        }
     }
 
     #faq-cards {
-        margin-top: 40px;
+        margin: 40px 0 0;
         display: flex;
         flex-flow: row wrap;
         justify-content: space-between;
@@ -847,7 +856,7 @@ section {
 
             .panel {
                 display: none; // Toggled in JS
-                padding: 20px 65px; // large side padding aligns with header text
+                padding: 20px 20px; // large side padding aligns with header text
                 background-color: $white;
 
                 p, em {
@@ -873,40 +882,36 @@ section {
 
 // Sponsors
 #sponsors {
-
     flex-direction: row;
     justify-content: space-between;
 
-    #sponsor-content {
+    #prospectusGraphic {
+        margin: 0 1rem 0 120px;
+        width: 75%;
+    }
 
-        padding-top: 5rem;
+    #sponsor-content {
+        padding: 3rem 120px 3rem 1rem;
         order: 2;
         z-index: 1;
-        padding-left: 2rem;
         background-image: url("../assets/bh10/main-site/5-sponsors/coloredLinesSponsors.svg");
         background-repeat: no-repeat;
         background-size: contain;
-        //background-position: right 8rem;
+        background-position: right;
 
-        // Static values to fit the bg
-        width: 1095px;
-        height: 625px;
-
-        h2, p {
-            
-        }
 
         #sponsor-btns {
-            margin: 1rem 0 2rem;
+            justify-content: center;
             display: flex;
     
             #prospectus {
                 @include button-primary();
-                margin-right: 2rem;
+                margin: 0 2rem 0 0;
             }
     
             #email {
                 @include button-secondary();
+                margin: 0;
             }
         }
 
@@ -925,24 +930,95 @@ section {
     // }
 }
 
+#sponsor-logos {
+    margin: 0 120px;
+    h3 {
+        text-align: center;
+    }
+    
+    .logo-group {
+        align-items: center;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        row-gap: 3rem;
+        column-gap: 5rem;
+        padding: 2rem 0;
+
+        img {
+            transition: all 0.2s;
+
+            &:hover {
+                transform: translateY(-10px);
+                transition: all 0.2s;
+            }
+        }
+    }
+
+    #brick-tier img {
+        height: 275px;
+        max-width: 100%;
+    }
+
+    #platinum-tier img {
+        height: 255px;
+        max-width: 100%;
+    }
+
+    #gold-tier {
+
+        #mttech { // logo shape messes with scaling
+            height: 150px;
+            max-width: 100%;
+        }
+
+        #wegmans { // logo size messes with scaling
+            height: 400px;
+            max-width: 100%;
+        }
+        
+        img {
+            height: 175px;
+            max-width: 100%;
+        }
+    }
+
+    #bronze-silver-tier img {
+        height: 150px;
+    }
+    
+    #partners {
+        padding-top: 1rem;
+
+        img {
+            height: 80px;
+            max-width: 90%;
+        }
+
+        #stickermule { // their brand's padding messes with size consistancy
+            height: 100px;
+        }
+
+        #simone { // their logo's shape messes with size consistancy
+            height: 50px;
+        }
+    }
+}
+
 // Contact
 #contact {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-direction: row;
-    min-height: auto;
+    //min-height: auto;
 
     #contact-content {
-        order: 1;
-        //width: 50%;
-        padding-right: 20px;
+        padding: 3rem 0 3rem 120px;
         background-image: url("../assets/bh10/main-site/6-contact/coloredLinesContact.svg");
         background-size: contain;
         background-repeat: no-repeat;
-
-        // Static values to fit the bg
-        width: 633px;
-        height: 625px;
+        background-position: left;
 
         a {
             border-bottom: 2px solid white;
@@ -963,30 +1039,29 @@ section {
     // }
 
     #contact-socials {
-        order: 2;
         align-self: flex-end;
         background-image: url("../assets/bh10/main-site/6-contact/laptopContact.svg");
-        width: 638px;
+        width: 650px;
         max-width: 100%;
-        height: 458px;
-        margin-bottom: -2px; // Gets rid of gap between svg and footer
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center bottom;
-        padding: 1rem 2.8rem 5rem;
+        padding: 5rem 2rem 4rem 6rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         color: $desat-blue;
 
+
         #social-icons {
             display: flex;
             position: relative;
             flex-wrap: wrap;
 
-            img, p {
-                margin: 1rem;
+            img {
+                margin: 0.5rem;
+                height: 30px;
             }
         }
     }
@@ -994,10 +1069,11 @@ section {
 
 // Scroll Register End
 #register-end {
-    margin-bottom: 15rem;
+    margin: 0 120px 3rem 120px;
+    text-align: center;
 
     h1 {
-        font-size: 100.29px;
+        font-size: 5rem;
         margin-bottom: 2rem;
     }
 
@@ -1012,10 +1088,12 @@ footer {
     padding: 2rem 0rem;
     display: flex;
     justify-content: space-between;
+    text-align: center;
 
     p {
         line-height: 2.5rem;
         text-decoration: none;
+        padding: 0;
     }
 
     #footer-left {
@@ -1059,12 +1137,12 @@ footer {
 @media screen and (max-width: 1220px) {
     // Nav
     nav {
-        padding: 0px 85px 0px 5rem;
+        padding: 0 100px 0 30px;
     }
 
     // Section padding
     section {
-        padding: 120px 5rem 0px; // Set up to avoid nav overlap when linked
+        padding: 120px 0px 0px; // Set up to avoid nav overlap when linked
     }
 
     // Hero
@@ -1074,9 +1152,13 @@ footer {
 
         #hero-content {
             width: auto;
-            margin-right: 0;
             flex-basis: auto;
             text-align: center;
+            margin-bottom: 2rem;
+
+            #hero-buttons { 
+                margin: 0 auto;
+            }
         }
     }
 
@@ -1106,14 +1188,14 @@ footer {
     // Nav
     nav {
         height: 70px;
-        padding: 0px 3.5rem;
+        padding: 0px 100px 0px 3.5rem;
 
         #toggle {
             display: block;
         }
 
         #logo {
-            width: 60px;
+            width: 80px;
         }
 
         .link, #login {
@@ -1125,84 +1207,83 @@ footer {
         height: 100vh;
         width: 50vw;
         min-width: max-content;
-        padding: 0px 3.5rem;
+        padding: 0px;
         border-bottom: none;
         border-right: 2px solid rgba($ele-indigo, 25%);
         flex-direction: column;
         justify-content: flex-start;
         z-index: 4;
+        margin: 0;
 
         .top {
             height: 68px;
+            margin: 0;
+
+            #toggle {
+                padding: 0 3.5rem;
+                margin: 0;
+            }
         }
 
         .left, .right {
             align-items: flex-start;
-            margin-top: 2rem;
+            margin: 2rem;
 
-            a {
+            .link {
+                display: block;
                 margin-right: 0rem;
                 margin-top: 2rem;
             }
         }
-    }
-}
 
-// Mobile Styling
-@media screen and (max-width: 800px) {
-
-    h1 {
-        font-size: 2.8rem;
+        .right .link {
+            margin: 1rem;
+        }
     }
 
-    #pre-reg {
-    
-        .mini-window {
+    #about {
+        #about-cards {
+            flex-direction: column;
+            margin-bottom: 1rem;
 
-            width: 94%;
-            height: 100%;
+            .about-card-space {
+                width: 100%;
 
-            // Window adjustment to fit to screen
-            p {
-                padding-top: 1rem;
-                margin-left: 1rem;
-                margin-right: 1rem;
+                .about-card {
+                    width: 100%;
+
+                    .about-header #blue4pt {
+                        display: none;
+                    }
+                }
+
+                .about-end {
+                    display: none;
+                }
             }
 
-            .title-bar {
-
-                .title {
-                    right: 5px;
-                    bottom: 42px;
-                }
+            .about-card-space:last-of-type {
+                margin-top: 2rem;
             }
         }
 
         #about-stats {
             flex-direction: column;
-
-            #stats {
-                grid-template-columns: repeat(3, 1fr);
-                align-items: end;
-                grid-auto-rows: 220px;
-            }
-
+    
             #stats-content {
                 width: 100%;
+                margin: 0;
             }
-
-            // video {
-            //     max-width: 100%;
-            //     padding-top: 2rem;
-            // }
+    
+            #brick-graphic {
+                margin: 1rem 0 0;
+                width: 100px;
+            }
         }
     }
-
-    // // Prizes
-    // #prizes #prizes-card > .content .text .title {
-    //     letter-spacing: 0.5rem;
-    // }
 }
+
+
 
 @media screen and (max-width: 900px) {
     // Variables
@@ -1328,15 +1409,23 @@ footer {
 
     // Sponsors
     #sponsors {
-        #sponsor-btns {
-            flex-flow: column;
-            width: max-content;
-            margin: auto;
+        flex-direction: column-reverse;
+        #sponsor-content  {
+            padding: 3rem 120px;
+            #sponsor-btns {
+                flex-flow: column;
+                width: max-content;
+                margin: auto;
 
-            #prospectus {
-                margin: 0rem 0rem 1rem;
-                padding: 1rem 3rem;
+                #prospectus {
+                    margin: 0rem 0rem 1rem 0rem;
+                    padding: 1rem 3rem;
+                }
             }
+        }
+        #prospectusGraphic {
+            margin-left: 4rem;
+            margin-right: 4rem;
         }
 
         .logo-group {
@@ -1360,7 +1449,7 @@ footer {
 
         #contact-content {
             width: 100%;
-            padding-right: 0px;
+            padding: 3rem 120px;
         }
 
         #contact-socials {
@@ -1378,7 +1467,96 @@ footer {
     }
 }
 
+// Mobile Styling
+@media screen and (max-width: 800px) {
+
+    // Rest the left-right page margin (hacky)
+    #hero {
+        padding: 150px 0 0;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    #sponsors #sponsor-content {
+        padding: 3rem 1rem;
+    }
+    #sponsor-logos {
+        margin: 0 1rem;
+    }
+    #register-end {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        h1 {
+            font-size: 3rem;
+        }
+    }
+    #contact #contact-content {
+        padding: 3rem 1rem;
+    }
+    #about #about-text, #about #about-cards, #about #about-stats, #faq {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    #pre-reg {
+    
+        .mini-window {
+
+            width: 94%;
+            height: 100%;
+
+            // Window adjustment to fit to screen
+            p {
+                padding-top: 1rem;
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+
+            .title-bar {
+
+                .title {
+                    right: 5px;
+                    bottom: 42px;
+                }
+            }
+        }
+
+        #about-stats {
+            flex-direction: column;
+
+            #stats {
+                display: flex;
+            }
+
+            #stats-content {
+                width: 100%;
+            }
+
+            // video {
+            //     max-width: 100%;
+            //     padding-top: 2rem;
+            // }
+        }
+    }
+
+    // // Prizes
+    // #prizes #prizes-card > .content .text .title {
+    //     letter-spacing: 0.5rem;
+    // }
+}
+
 @media screen and (max-width: 650px) {
+    // Nav
+    nav #register {
+        display: none;
+    }
+    .show-nav #register {
+        display: block;
+    }
+
     // About
     #about #stats-content #stats {
         flex-direction: column;
@@ -1422,9 +1600,15 @@ footer {
         margin: 2rem 0;
         background-image: none;
         height: auto;
+        color: $white;
 
-        #social-icons a i {
-            font-size: 2rem;
+        #social-icons {
+            background-color: white;
+            border-radius: 6px;
+
+            a i {
+                font-size: 2rem;
+            }
         }
     }
 
@@ -1432,8 +1616,8 @@ footer {
     footer {
         flex-direction: column;
 
-        #footer-right {
-            text-align: left;
+        #footer-left {
+            padding: 0;
         }
     }
 }
