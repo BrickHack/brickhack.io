@@ -1,5 +1,6 @@
 import "./sass/index.scss"
 import $ from "jquery"
+import '@fortawesome/fontawesome-free/css/all.css'
 
 // Hiring message
 const hiringMessage = `Hey, you.
@@ -240,3 +241,79 @@ function convertDate(date) {
     }
     return output;
 }
+
+// adopted from https://stackoverflow.com/users/12271569/rick 
+const text = ["BrickHack", "Teamwork", "Creating", "Learning", "Bricks", "Friendship", "Fun!"];
+let counter = 0;
+
+setInterval(change, 5000);
+
+// fade-in-out text and changes each interval
+function change() {
+  document.getElementById("fadeOut").setAttribute("class", "text-fadeout");
+
+  setTimeout(() => {
+    document.getElementById("fadeOut").innerHTML = text[counter];
+    document.getElementById("fadeOut").setAttribute("class", "text-show");
+  }, 1000)
+
+  counter++;
+
+  if (counter >= text.length) {
+    counter = 0;
+  }
+}
+
+// bh-7 carousel import
+// Slick-carousel
+import $ from 'jquery'
+import 'slick-carousel'
+
+$(document).ready(function() {
+    $('.carousel').slick({
+        infinite: true,
+        swipeToSlide: true,
+        variableWidth: true,
+        slidesToShow: 3,
+        slidesToScroll: 2,
+        cssEase: 'ease-in-out',
+        autoplay: true,
+        autoplaySpeed: 2000,
+        speed: 1000,
+        responsive: [
+            {
+                breakpoint: 1500,
+                settings: {
+                    centerMode: true
+                }
+            }
+        ]
+    });
+});
+
+// Clickable images functionality
+
+// Opens modal when img is clicked
+$(document).on('click', '.slide-image', function() {
+    $('#modal').show();
+    $('#modal-content').attr('src', this.src);
+});
+
+// Closes modal when X is clicked
+$(document).on('click', '#close', function() {
+    $('#modal').hide();
+});
+
+// Closes modal when window is clicked
+$(window).on('click', function(event) {
+    if (event.target == modal) {
+        $('#modal').hide();
+    }
+});
+
+// Closes modal when esc key is pressed
+$(document).on('keydown', function(event) {
+    if (event.key == "Escape") {
+        $('#modal').hide();
+    }
+});

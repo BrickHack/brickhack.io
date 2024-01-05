@@ -1,0 +1,647 @@
+// Variables
+// Using a mix of SASS for easier readability and CSS for easier changability
+
+// Colors
+// BG Color
+$desat-blue: #262136;
+
+// Gradient Colors
+$pastel-green: #7BF0BA;
+$teal: #44D4D2;
+$light-purple: #C2A3FD;
+$orange: #FF9C4A;
+
+// Neutral Colors
+$black: #000000;
+$white: #FFFFFF;
+$off-white: #F6F8FA;
+$grey: #D0D9E2;
+
+// BH9 Colors
+$darker-blue: #081646;
+$dark-blue: #193787;
+$blue: #1447C8;
+
+// Main gradient
+.bh-gradient {
+    // Fallback in case gradient fails to show
+    background-color: $white;
+
+    // Gradient created
+    background-image: linear-gradient(
+        130deg, 
+        $pastel-green 15%,
+        $teal 30%,
+        $light-purple 60%,
+        $orange 75%,
+        );
+}
+
+// Text gradient
+.gradient-text {
+
+    // background-size and properties to repeat
+    background-size: 100%;
+    background-repeat: repeat;
+
+    // Gradient shows through text by rendering
+    // mask as background with transparent text showing gradient
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+	-webkit-background-clip: text;
+    -moz-background-clip: text;
+}
+
+// Standard fill case for white text
+.standard-text {
+    -webkit-text-fill-color: white;
+    -moz-text-fill-color: white;
+}
+
+// Text color desat-blue for text
+.desatblue-text {
+    color: $desat-blue;
+}
+
+// General Styles -- from bh9.scss
+* {
+    margin: 0 auto; // centers all elements
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+
+    // Transition all elements on the screen
+    // (except FAQ panel, which has conflicting transitions)
+    // (and except certian nav stuff, which we don't want)
+    &:not(.panel):not(.show-nav):not(.left):not(.right) {
+        transition-duration: 1s;
+        transition-property: margin, padding, width, font-size;
+    }
+}
+
+body {
+    margin-top: 2rem; // spacing
+    background-color: $desat-blue;
+    color: $white; // default text color
+}
+
+h1 {
+    font-size: 4rem;
+    text-align: center;
+    font-weight: 600; // semi-bold
+}
+
+p {
+    font-size: var(--body-font-size);
+    padding-bottom: 1rem;
+}
+
+// Typography
+:root {
+    --body-font-size: 1.3rem;
+}
+
+// Mixins - imported from bh9.scss
+@mixin button-primary {
+    background-color: $blue;
+    text-decoration: none;
+    user-select: none;
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    display: inline-block;
+    color: $off-white;
+    font-size: var(--body-font-size);
+    cursor: pointer;
+    transition: 0.2s all;
+
+    &:hover {
+        background-color: $dark-blue;
+    }
+
+    &:active {
+        transform: translateY(4px);
+        color: $off-white;
+        background-color: $darker-blue;
+    }
+
+    @media screen and (max-width: 900px) {
+        font-size: 1em;
+    }
+}
+
+@mixin button-secondary {
+    @include button-primary;
+    background-color: white;
+    color: $blue;
+    border: 2px solid $blue;
+
+    &:hover {
+        color: $off-white;
+    }
+}
+
+// Pre-Reg Layout
+#pre-reg {
+
+   display: flex;
+   flex-direction: column;
+   margin: auto;
+   padding-top: 10px;
+   padding-bottom: 10px;
+
+    .mini-window {
+
+        max-width: 656px;
+        width: 100%;
+        max-height: 316px;
+        margin-top: 90px; // from h1
+        padding-bottom: 10px;
+
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column; // top-down order
+        position: relative;
+        border: 3px solid white;
+        flex: 0 0 656px; // no flex grow/shrink; basis at max width
+        z-index: 1;
+        overflow-y: auto; // expands based on screen size
+        background-color: $orange; // default bg in case gradient fails
+
+         // main message
+        p {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            margin-left: 3rem;
+            color: black;
+            text-align: left;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        // email field and submit button
+        #pre-reg-form { 
+            display: flex;
+            position: relative;
+            flex-wrap: wrap;
+            margin-top: 1rem; // from mini-window.p
+            justify-content: center;
+
+            // elements on same row w/o line break
+            white-space: nowrap;
+
+            // takes up rest of mini window
+            flex-grow: 1;
+        }
+        input[name="email"], input[type="submit"] {
+            display: inline-block;
+            max-height: 43px;
+            height: 100%;
+            justify-self: center;
+            flex: 1 1 auto;
+            
+            margin: 0 5px; // 5 pixels apart left/right
+            font-family: 'Work Sans', sans-serif;
+            position: relative;
+        }
+
+        input[name="email"] {
+            max-width: 438px;
+            width: 438px;
+
+            font-size: 1.3rem;
+            padding-left: 10px;
+            border: 3px white solid;
+            margin-bottom: auto; // fills the rest of the bottom
+
+            &:focus {
+                outline: 3px $desat-blue solid;
+            }
+        }
+
+        input[type="submit"] {
+            max-width: 106px;
+            width: 106px;
+
+            font-size: 1.3rem;
+            border: 3px solid white;
+            opacity: 70%;
+
+           // limited to desktop hover
+           @media (hover: hover) and (pointer: fine), only screen and (-ms-high-contrast:active), (-ms-high-contrast:none) {
+            &:hover { color: $off-white;
+                      background-color: $desat-blue; }
+            }
+        }
+    }
+
+    .title-bar {
+
+        // Main container
+        display: flex;
+        width: 100%;
+        max-height: 42px;
+        position: relative;
+        background-color: $desat-blue;
+        flex-wrap: nowrap;
+
+        z-index: 2;
+        align-items: flex-start;
+        
+        // Title text box (inherits from .mini-window.p)
+        .title {
+            font-weight: 600; // semi-bold
+            bottom: 58px;
+            right: 25px;
+            position: relative;
+            white-space: nowrap; // no overflow when shrinked
+            flex-basis: 500px; // takes up most space in flex
+            overflow: hidden;
+            z-index: 3;
+        }
+
+        #minimize, #maximize, #close {
+            padding: 0;
+            align-self: flex-end;
+            margin-right: auto;
+            position: relative;
+            margin: 10px; // spaced 10 pixels apart
+            margin-bottom: 8px;
+        }
+
+        #minimize {
+            padding-bottom: 5px; // centered on title-bar
+        }
+    }
+
+    // Masks the background from behind
+    #star-deco {
+
+        padding: 0;
+        margin: 0;
+
+        width: 100%;
+        height: auto;
+        order: 1;
+        z-index: -1;
+        height: 100%;
+
+        position: absolute;
+        
+        align-self: center;
+        overflow: hidden; // prevents increasing scroll with transform
+        flex-wrap: nowrap;
+
+        #blue-star, #orange-star, #purple-star, #gradient-star-4pt, #gradient-star-7pt {
+            position: relative;
+            max-width: 9rem; // consistent size with all elts
+        }
+
+        // Positions are adjusted from a center column
+
+        #blue-star {
+            right: 440px;
+            top: 270px;
+            rotate: 15deg;
+        }
+
+        #orange-star {
+            top: 30px;
+            left: 410px;
+            rotate: 10deg;
+        }
+
+        #purple-star {
+            top: 260px;
+            left: 496px;
+            rotate: -45deg;
+        }
+
+        #gradient-star-4pt {
+            bottom: 10px;
+            left: 345px;
+            rotate: 15deg;
+        }
+
+        #gradient-star-7pt {
+            bottom: 20px;
+            right: 320px;
+            rotate: 15deg;
+        }
+    }
+
+    footer {
+        max-width: 100%;
+        max-height: 100%;
+        padding-top: 3rem;
+        font-weight: bold;
+        text-align: center;
+        line-height: 3;
+        order: 2;
+
+        a {
+            text-decoration: underline;
+            text-decoration-color: white;
+            color: white;
+        }
+
+        a:hover {
+            color: $orange;
+        }
+    }
+}
+
+// Screen Scaling
+// Stars relocate in different spots for mobile styling
+// Tablet Styling
+@media screen and (max-width: 1200px) {
+
+    h1 {
+         font-size: 3.6rem;
+    }
+
+    #pre-reg {
+
+        .mini-window {
+    
+            width: 98%;
+
+            input[name="email"] {
+                width: 95%;
+            }
+            
+        }
+
+        #star-deco {
+
+            #blue-star {
+                right: 390px;
+                top: 280px;
+                rotate: 15deg;
+            }
+    
+            #orange-star {
+                top: 30px;
+                left: 340px;
+                rotate: 10deg;
+            }
+    
+            #purple-star {
+                top: 260px;
+                left: 426px;
+                rotate: -45deg;
+            }
+    
+            #gradient-star-4pt {
+                bottom: 10px;
+                left: 275px;
+                rotate: 15deg;
+            }
+    
+            #gradient-star-7pt {
+                bottom: 20px;
+                right: 250px;
+                rotate: 15deg;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1075px) {
+
+    h1 {
+        font-size: 3.2rem;
+    }
+
+    #pre-reg {
+    
+        .mini-window {
+
+            width: 96%;
+
+            input[name="email"] {
+                width: 70%;
+            }
+            
+        }
+
+
+        #star-deco {
+
+            #blue-star {
+                right: 320px;
+                top: 280px;
+                rotate: 15deg;
+            }
+    
+            #orange-star {
+                top: 30px;
+                left: 290px;
+                rotate: 10deg;
+            }
+    
+            #purple-star {
+                top: 260px;
+                left: 356px;
+                rotate: -45deg;
+            }
+    
+            #gradient-star-4pt {
+                bottom: 10px;
+                left: 225px;
+                rotate: 15deg;
+            }
+    
+            #gradient-star-7pt {
+                bottom: 20px;
+                right: 200px;
+                rotate: 15deg;
+            }
+        }
+    }
+}
+
+// Mobile Styling
+@media screen and (max-width: 800px) {
+
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    #pre-reg {
+    
+        .mini-window {
+
+            width: 94%;
+            height: 100%;
+
+            // Window adjustment to fit to screen
+            p {
+                padding-top: 1rem;
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+
+            .title-bar {
+
+                .title {
+                    right: 5px;
+                    bottom: 42px;
+                }
+            }
+    
+            input[name="email"] {
+                width: 60%;
+                font-size: 1.15rem;
+                margin-left: 12px;
+            }
+        }
+
+        #star-deco {
+
+            #blue-star {
+                right: 270px;
+                top: 150px;
+                rotate: 15deg;
+            }
+    
+            #orange-star {
+                top: 70px;
+                left: 150px;
+                rotate: 10deg;
+            }
+    
+            #purple-star {
+                top: 260px;
+                left: 306px;
+                rotate: -45deg;
+            }
+    
+            #gradient-star-4pt {
+                top: 260px;
+                left: 160px;
+                rotate: 15deg;
+            }
+    
+            #gradient-star-7pt {
+                bottom: 20px;
+                right: 150px;
+                rotate: 15deg;
+            }
+        }
+    }
+}
+
+// Case for smaller phones
+@media screen and (max-width: 400px) {
+
+    #pre-reg {
+
+        .mini-window {
+
+            max-height: 340px; // increases size of the bottom of window
+
+            input[name="email"], input[type="submit"] {
+                display: block; // allows wrap to bottom
+                max-height: 45%;
+                margin-bottom: 10px;
+            }
+
+            input[name="email"] {
+                width: 130%; // increased size of field
+                font-size: .95rem;
+                right: 45px; // centered
+            }
+
+            input[type="submit"] {
+                margin-left: 3.05rem; // centered in mini-window
+            }
+
+        }
+
+    }
+
+}
+
+// Galaxy Fold Styling
+@media screen and (max-width: 300px) {
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    #pre-reg {
+    
+        .mini-window {
+
+            width: 92%;
+            max-height: 350px; // increases size of the bottom of window
+            margin-top: 60px;
+
+            // Window adjustment to fit to screen
+            p {
+                padding-top: 1rem;
+                margin-left: 1rem;
+                font-size: 1.3rem;
+            }
+
+            .title-bar {
+
+                .title {
+                    right: 5px;
+                    bottom: 40px;
+                }
+            }
+    
+            input[name="email"] {
+                width: 100%;
+                font-size: .85rem;
+                margin-left: 0;
+                right: 0px; // centering
+            }
+
+            input[type="submit"] {
+                margin-left: 2.2rem; // centered in mini-window
+            }
+        }
+
+        #star-deco {
+
+            #blue-star {
+                right: 270px;
+                top: 150px;
+                rotate: 15deg;
+            }
+    
+            #orange-star {
+                top: 70px;
+                left: 150px;
+                rotate: 10deg;
+            }
+    
+            #purple-star {
+                top: 260px;
+                left: 306px;
+                rotate: -45deg;
+            }
+    
+            #gradient-star-4pt {
+                top: 260px;
+                left: 160px;
+                rotate: 15deg;
+            }
+    
+            #gradient-star-7pt {
+                bottom: 20px;
+                right: 150px;
+                rotate: 15deg;
+            }
+        }
+
+        footer {
+            font-size: .9rem;
+        }
+    }
+}

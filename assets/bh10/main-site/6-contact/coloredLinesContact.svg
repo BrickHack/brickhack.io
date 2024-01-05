@@ -1,0 +1,17 @@
+<svg width="663" height="625" viewBox="0 0 663 625" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_f_123_754)">
+<rect opacity="0.25" x="637" y="613" width="407" height="24" rx="12" transform="rotate(180 637 613)" fill="#7BF0BA"/>
+<rect opacity="0.25" x="239" y="555" width="407" height="24" rx="12" transform="rotate(180 239 555)" fill="#C2A3FD"/>
+<rect opacity="0.25" x="651" y="132" width="407" height="24" rx="12" transform="rotate(180 651 132)" fill="#C2A3FD"/>
+<rect opacity="0.25" x="413" y="36" width="407" height="24" rx="12" transform="rotate(180 413 36)" fill="#FE9C4A"/>
+<rect opacity="0.25" x="23" y="416" width="407" height="24" rx="12" transform="rotate(180 23 416)" fill="#FE9C4A"/>
+<rect opacity="0.25" x="91" y="112" width="407" height="24" rx="12" transform="rotate(180 91 112)" fill="#7BF0BA"/>
+</g>
+<defs>
+<filter id="filter0_f_123_754" x="-431.9" y="0.1" width="1094.8" height="624.8" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="5.95" result="effect1_foregroundBlur_123_754"/>
+</filter>
+</defs>
+</svg>
