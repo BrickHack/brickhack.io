@@ -412,6 +412,7 @@ section {
 // Photo Carousel
 
 .carousel {
+    $slide-size: 280.19px; // smaller slides
     padding: 120px 0px; // Set up to avoid nav overlap when linked
     //padding-top: 240px;
     flex-flow: column nowrap;
@@ -430,7 +431,6 @@ section {
     }
 
     .slick-slide {
-        $slide-size: 280.19px; // smaller slides
         height: $slide-size;
         margin-right: 20px; // Same margin as wire top calculation
 
