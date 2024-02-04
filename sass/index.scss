@@ -23,6 +23,8 @@ $light-purple: #C2A3FD;
 $orange: #FF9C4A;
 
 // Neutral Colors
+
+// Neutral Colors
 $black: #000000;
 $white: #FFFFFF;
 $off-white: #F6F8FA;
@@ -197,6 +199,7 @@ a {
     &:hover {
         background-color: $white;
         color: $desat-blue;
+
     }
 }
 
@@ -251,6 +254,7 @@ nav {
         text-decoration: none;
         color: $off-white;
     }
+
 
     .link {
 
@@ -443,7 +447,8 @@ section {
             top: -(15px + 20px); // Emphasize 20px margin on 15px height
             z-index: 2;
         }
-
+    }
+  
         // Offset clips above the carousel image
         // Pos: abs because pos: rel causes the two clips,
         // despite having different offsets,
@@ -472,6 +477,7 @@ section {
             margin-top: 10px; // Vertical offset from top clip
             z-index: 0;
         }
+    }
 
         img {
             position: relative;
@@ -766,6 +772,7 @@ section {
     }
 }
 
+
 // Schedule
 #schedule {
     display: flex;
@@ -865,6 +872,27 @@ section {
                 font-weight: bold;
                 color: $orange;
             }
+        }
+    }
+
+    // About
+    #about #about-content #about-buttons {
+        width: 100%;
+    }
+
+    // // Leadership
+    // #leadership #team {
+    //     display: grid;
+    //     grid-template-columns: 1fr 1fr 1fr;
+    // }
+
+    // Footer
+    footer #footer-right {
+        flex-direction: column;
+        text-align: right;
+
+        p:not(p:last-of-type) {
+            padding-right: 0;
         }
     }
 }
@@ -1028,6 +1056,7 @@ section {
             .graphic {
                 flex: 0 0 auto;
             }
+        }
 
             .text {
                 display: flex;
@@ -1926,7 +1955,26 @@ footer {
                     bottom: 42px;
                 }
             }
+
         }
+
+        #about-stats {
+            flex-direction: column;
+
+            #stats {
+                display: flex;
+            }
+
+            #stats-content {
+                width: 100%;
+            }
+
+            // video {
+            //     max-width: 100%;
+            //     padding-top: 2rem;
+            // }
+        }
+    }
 
         // #about-stats {
         //     flex-direction: column;
@@ -1974,7 +2022,7 @@ footer {
     #prizes #prizes-card > .content .text .title {
         letter-spacing: 0.5rem;
     }
-}
+
 
 @media screen and (max-width: 650px) {
     // Nav
