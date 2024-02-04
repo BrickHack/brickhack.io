@@ -83,10 +83,10 @@
             <!-- Login and Signup buttons -->
             <div id="hero-buttons">
                 <a id="login" href="https://apply.brickhack.io/" target="_blank">LOGIN</a>
-                <a id="register" href="https://apply.brickhack.io/users/sign_up" target="_blank">REGISTER</a>
-                <!-- <a id="discord" href="https://discord.gg/2F7RZg3F" target="_blank">DISCORD</a> Discord link or alternate button needed -->
+                <!-- <a id="register" href="https://apply.brickhack.io/users/sign_up" target="_blank">REGISTER</a> -->
+                <a id="discord" href="https://discord.gg/2F7RZg3F" target="_blank">DISCORD</a>
             </div>
-            <!-- <a id="register" href="https://apply.brickhack.io/users/sign_up" target="_blank">REGISTER</a> -->
+            <a id="register" href="https://apply.brickhack.io/users/sign_up" target="_blank">REGISTER</a>
         </div>
         <img src="assets/bh10/main-site/2-hero/heroricky.svg" alt="The Ring: Featuring Ricky" id="rickygraphic">
         <!-- <div id="graphicwrap">
@@ -171,7 +171,6 @@
         </div>
     </div>
 
-
     <!-- Carousel Pictures can be clicked and zoomed in -->
     <div id="modal">
         <span id="close"><i id="close" class="fas fa-times"></i></span>
@@ -187,6 +186,7 @@
 
             <p>Apply to come spend <b>February 24th and 25th, 2024</b> with us to learn, collaborate, build, and innovate! Expect food, swag, mentorship, and timeless brick-laden memories!</p>
         </div>
+        <div id="faq-cards">
 
         <div id="about-cards">
             <div class="about-card-space">
@@ -223,25 +223,56 @@
             <div id="stats-content">
                 <h3>Last year's BrickHack 9 in numbers:</h3>
                 <div id="stats">
-                    <!-- <img src="assets/bh10/main-site/3-about/purpleCornerElement.svg" id="purple-corner"> -->
-                    <div>
+                    <div id ="left-corner-cont">
                         <p><b>$4,640</b></p>
                         <p>in prizes</p>
-                        <!-- <img src="assets/bh10/pre-reg/Blue-Star-4Alt.svg" alt="blue-4ptstar graphic"> -->
                     </div>
-                    <div>
+                    <div class ="p-cont">
                         <p><b>30+</b></p>
-                        <p>schools represented</p>
-                        <!-- <img src="assets/bh10/pre-reg/Orange-Star-6.svg" alt="orange-6ptstar graphic"> --> 
+                        <p>schools</p>
+                        <p>represented</p>
                     </div>
-                    <div>
-                        <p><b>354</b></p>
+                    <div id ="right-corner-cont">
+                        <p><b>354</b></p>                                
                         <p>participants</p>
-                    </div>
-                    <!-- <img src="assets/bh10/main-site/3-about/greenCornerElement.svg" id="green-corner"> -->
+                   </div>
                 </div>
             </div>
             <img src="assets/bh10/main-site/3-about/stackOfBricks.svg" id="brick-graphic" alt="Transparent Stack of Rainbow Bricks"/>
+        </div>
+    </section>
+
+    <!-- Schedule -->
+    <section id="schedule">
+        <div id="schedule-left">
+            <h2>Schedule</h2>
+            <div>
+                <p>Showing events for: </p>
+                <h3 id="date-indicator-saturday">Saturday, February 24th</h3>
+                <h3 id="date-indicator-sunday">Sunday, February 25th</h3>
+            </div>
+            <div id="schedule-days">
+                <a id="saturday" class="day day-active">24</br>SAT</a>
+                <a id="sunday" class="day">25</br>SUN</a>
+            </div>
+            <img src="assets/bh10/main-site/schedule/checkmark.svg" id="checkmark-graphic" alt="Checkmark Button">
+            <img src="assets/bh10/main-site/schedule/rainbow_bricks.svg" id="rainbow_bricks-graphic" alt="Two Rainbow Bricks Stacked Together">
+        </div>
+        <div id="schedule-calendar">
+            <div id="schedule-tape">
+                <div id="schedule-tape-left"></div>
+                <div id="schedule-tape-right"></div>
+            </div>
+            <div class="schedule-events" id="feb-24-content">
+                 <!-- (Content is dynamically added here) -->
+            </div>
+            <div class="schedule-events" id="feb-25-content">
+                 <!-- (Content is dynamically added here) -->
+            </div>
+            <div>
+                <i class="fa fa-chevron-down"></i>
+                <p>view more events</p>
+            </div>
         </div>
     </section>
 
@@ -345,6 +376,34 @@
         </div>
     </section>
 
+     <!-- Prizes -->
+     <section id="prizes">
+        <h2>Prizes</h2>
+        <!-- <video id="prizes-ricky" autoplay muted loop playsinline>
+            <source src="./assets/bh8/videos/Prize-Ricky.mp4" type="video/mp4">
+        </video> -->
+        <img src="assets/bh10/main-site/prizes/prizes-ricky.svg" id="prizes-ricky-graphic" alt="Ricky cheering with confetti, pastel green and purple bricks, and balloons">
+        <div id="prizes-card">
+            <div class="content">
+                <img class="graphic" src="/assets/bh10/main-site/prizes/bh10-bars.svg" alt="Three colored bars of varying heights: medium light blue, tall orange, short pastel purple"/>
+                <div class="text">
+                    <p class="title">BRICKHACK PRIZES</p>
+                    <p>This year, we'll have more than [X] prize categories for you to work towards! 
+                        Projects can be submitted to different event and sponsor prize categories, but everyone learns and wins at BrickHack! 
+                        More info will be released on Devpost before the event.</p>
+                </div>
+            </div>
+            <!-- <div id="inner-prizes-card">
+                <p class="title"><b>Shipping Notes:</b></p>
+                <div class="content">
+                    <p><b>Due to logistical restrictions, only North American residents with active addresses are eligible to receive prizes and physical swag.</b></p>
+                </div>
+            </div> -->
+            <!-- <p id="prizes-corner-text">BrickHack X</p> -->
+        </div>
+    </section>
+
+
     <!-- Sponsors Section -->
     <section id="sponsors">
         <img id="prospectusGraphic" src="assets/bh10/main-site/5-sponsors/sponsorsImage.svg">
@@ -416,6 +475,84 @@
         </div>
     </section>
 
+    <!-- Leadership -->
+    <section id="leadership">
+        <h2>Meet the Team</h2>
+        <div id="team">
+            <div class="leader">
+                <img src="assets/bh10/main-site/leadership/rainbow-backing.svg" alt="A rainbow gradient of BHX colors accompanying the headshot image" id="rainbow-backing">
+                <div class="leader-img">
+                    <img src="/assets/bh9/leadership/sj.jpg" alt="Headshot of SJ Miller">
+                </div>
+                <p class="leader-role">President</p>
+                <p class="leader-name">SJ Miller</p>
+            </div>
+            <!-- <div class="leader">
+                <div class="leader-img">
+                    <div class="tape tape-blue"></div>
+                    <img src="/assets/bh9/leadership/krzys.jpg" alt="Headshot of Krzysztof Grochal">
+                </div>
+                <p class="leader-role">Event Director</p>
+                <p class="leader-name">Krzysztof Grochal</p>
+            </div> -->
+            <div class="leader">
+                <div class="leader-img">
+                    <div class="tape tape-orange"></div>
+                    <img src="/assets/bh10/main-site/leadership/photos/charles.jpeg" alt="Headshot of Charles von Goins II">
+                </div>
+                <p class="leader-role">Logistics</p>
+                <p class="leader-name">Charles von Goins II</p>
+            </div>
+            <div class="leader">
+                <div class="leader-img">
+                    <div class="tape tape-blue"></div>
+                    <img src="/assets/bh9/leadership/mackenzie.jpg" alt="Headshot of Mason Gardner">
+                </div>
+                <p class="leader-role">Sponsorship</p>
+                <p class="leader-name">Mason Gardner</p>
+            </div>
+            <div class="leader">
+                <div class="leader-img">
+                    <div class="tape tape-orange"></div>
+                    <img src="/assets/bh9/leadership/heather.png" alt="Headshot of Caitlin Tak-Nguyen">
+                </div>
+                <p class="leader-role">Marketing</p>
+                <p class="leader-name">Caitlin Tak-Nguyen</p>
+            </div>
+            <div class="leader">
+                <div class="leader-img">
+                    <div class="tape tape-orange"></div>
+                    <img src="/assets/bh9/leadership/heather.png" alt="Headshot of Heather Shields">
+                </div>
+                <p class="leader-role">Design</p>
+                <p class="leader-name">Heather Shields</p>
+            </div>
+            <div class="leader">
+                <div class="leader-img">
+                    <div class="tape tape-blue"></div>
+                    <img src="/assets/bh9/leadership/renee.jpg" alt="Headshot of Renee Bogdany">
+                </div>
+                <p class="leader-role">Design</p>
+                <p class="leader-name">Renee Bogdany</p>
+            </div>
+            <div class="leader">
+                <div class="leader-img">
+                    <div class="tape tape-orange"></div>
+                    <img src="/assets/bh9/leadership/lance.jpg" alt="Headshot of Lance Cordova">
+                </div>
+                <p class="leader-role">Webmaster</p>
+                <p class="leader-name">Lance Cordova</p>
+            </div>
+            <div class="leader">
+                <div class="leader-img">
+                    <div class="tape tape-blue"></div>
+                    <img src="/assets/bh9/leadership/will.jpg" alt="Headshot of William Li">
+                </div>
+                <p class="leader-role">Treasurer</p>
+                <p class="leader-name">William Li</p>
+            </div>
+        </div>
+    </section>
     <!-- Register End Section -->
     <section id="register-end">
         <h1>Building the Future,
