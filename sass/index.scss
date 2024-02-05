@@ -236,9 +236,10 @@ nav {
     }
 
     .left {
-        flex-grow: 3;
-        margin-left: 1rem; // readjust to center
-        margin-top: 2.5rem;
+        margin: 1rem 2rem 1rem 1rem; // readjust to center
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
     }
 
     #toggle {
@@ -253,6 +254,7 @@ nav {
         margin-right: 1rem;
         text-decoration: none;
         color: $off-white;
+        margin-left: 0;
     }
 
 
@@ -381,7 +383,7 @@ section {
         #register {
             @include button-primary();
             width: 64%;
-            margin-top: 1rem;
+            // margin-top: 1rem;
         }
     }
 
@@ -1049,7 +1051,6 @@ section {
             column-gap: 50px;
             display: flex;
             flex-direction: row;
-            margin-bottom: 100px;
 
             .graphic {
                 flex: 0 0 auto;
@@ -1185,15 +1186,15 @@ section {
 // Sponsors
 #sponsors {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 
     #prospectusGraphic {
-        margin: 0 1rem 0 120px;
+        margin: 0 1rem 0 1rem;
         max-width: 65%;
     }
 
     #sponsor-content {
-        padding: 3rem 120px 3rem 1rem;
+        padding: 3rem 1rem 3rem 1rem;
         order: 2;
         z-index: 1;
         background-image: url("../assets/bh10/main-site/5-sponsors/coloredLinesSponsors.svg");
@@ -1313,6 +1314,7 @@ section {
     grid-template-columns: .8fr .8fr .8fr .8fr;
     column-gap: 4rem;
     row-gap: 2.5rem;
+    padding: 1rem;
 
     .leader {
         .leader-img {
@@ -1334,6 +1336,7 @@ section {
             opacity: 0.7;
             font-weight: 500;
             padding-bottom: 0px;
+            ;
         }
 
         .leader-name {
@@ -1608,6 +1611,7 @@ footer {
 
         .left, .right {
             align-items: flex-start;
+            flex-direction: column;
             margin: 2rem;
 
             .link {
@@ -1665,8 +1669,13 @@ footer {
     }
 
     // Prizes
-    #prizes #prizes-card > .content .text .title {
-        letter-spacing: 0.5rem;
+    #prizes #prizes-card > .content {
+        .graphic {
+            display: none;
+        }
+        .text .title {
+            letter-spacing: 0.5rem;
+        }
     }
 }
 
@@ -1739,15 +1748,11 @@ footer {
                 flex-direction: column;
 
                 #stats {
-                    
-                    grid-auto-flow: column;
-                    
-                    .p-cont {
-                        
-                    }
+                    grid-template-columns: 33% 34% 33%;
 
-                    #left-corner-cont, #right-corner-cont {
-
+                    .p-cont, #left-corner-cont, #right-corner-cont {
+                        background: none;
+                        padding: 0;
                     }
                 }
             }
@@ -1780,18 +1785,10 @@ footer {
         // $inner-card-overflow-size: 20px;  // how far does the inner card go into the outer card's margins?
 
         #prizes-card {
-            padding: $overflow-size $overflow-size ($overflow-size + 40px);
+            padding: $overflow-size;
 
-            & > .content {
-                margin-bottom: 30px;
-
-                .graphic {
-                    display: none;
-                }
-
-                .text {
-                    row-gap: 15px;
-                }
+            & > .content .text {
+                row-gap: 15px;
             }
 
             // .tape {
@@ -2031,11 +2028,18 @@ footer {
     }
 
     // About
-    #about #stats-content #stats {
-        flex-direction: column;
+    #about #about-stats {
+        #stats-content #stats {
+            grid-template-columns: 100%;
+            grid-template-rows: auto auto auto;
+            row-gap: 2rem;
 
-        div {
-            padding: 0px 0px 20px;
+            div {
+                padding: 0px 0px 20px;
+            }
+        }
+        #brick-graphic { 
+            display: none;
         }
     }
 
@@ -2050,7 +2054,7 @@ footer {
 
     // Prizes
     #prizes #prizes-card {
-        padding: 20px 20px 60px;
+        padding: 20px;
 
         // #inner-prizes-card {
         //     margin-left: 0;
