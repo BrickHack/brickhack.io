@@ -788,6 +788,11 @@ section {
             margin-bottom: 1rem;
         }
 
+        #date-indicator-saturday, #date-indicator-sunday {
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+
         #schedule-days {
             //border: 2px solid $blue;
             border-radius: 6px;
@@ -829,7 +834,7 @@ section {
 
         .schedule-events .event {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             column-gap: 1rem;
             padding: 1rem;
             margin-bottom: 1rem;
@@ -839,6 +844,9 @@ section {
 
             p {
                 padding-bottom: 0rem;
+                color: $desat-blue;
+                width: 100%;
+                text-align: center;
             }
 
             &-complete {
@@ -859,12 +867,16 @@ section {
             .time {
                 opacity: 0.75;
                 font-size: 1rem;
+                text-align: left;
+                width: 50%;
                 margin: auto 0; // because it's smaller, centering it vertically
             }
             
             .location {
                 opacity: 0.75;
                 font-size: 1rem;
+                text-align: right;
+                width: 50%;
                 margin: auto 0; // because it's smaller, centering it vertically
             }
 
@@ -1764,11 +1776,16 @@ footer {
         display: flex;
         flex-flow: column;
 
-        #schedule-left .day {
-            width: calc(50% - 0.75rem);
+        #schedule-left {
+            #checkmark-graphic, #rainbow_bricks-graphic {
+                display: none;
+            }
+            .day {
+                width: calc(50% - 0.75rem);
 
-            &:first-of-type {
-                margin-right: 1rem;
+                &:first-of-type {
+                    margin-right: 1rem;
+                }
             }
         }
 
