@@ -866,6 +866,7 @@ section {
 
             .day {
                 @include button-primary();
+                background-color: $white;
                 margin: 0;
                 border-radius: 0px;
                 border: none;
@@ -876,7 +877,7 @@ section {
                 }
 
                 &-active {
-                    background-color: $white;
+                    background-color: $orange;
                 }
             }
         }
