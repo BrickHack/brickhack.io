@@ -16,6 +16,9 @@ $desat-blue: #262136;
 // Text Body
 $halite-blue: #081646;
 
+// Text Body
+$halite-blue: #081646;
+
 // Gradient Colors
 $pastel-green: #7BF0BA;
 $teal: #44D4D2;
@@ -25,10 +28,18 @@ $orange: #FF9C4A;
 // Neutral Colors
 
 // Neutral Colors
+
+// Neutral Colors
 $black: #000000;
 $white: #FFFFFF;
 $off-white: #F6F8FA;
 $grey: #D0D9E2;
+
+// Carousel Backclip
+$muzli: #CC7D3B;
+
+// Nav bar line
+$ele-indigo: #6F619E;
 
 // Carousel Backclip
 $muzli: #CC7D3B;
@@ -85,12 +96,15 @@ $candid-blue: #6AC5E3;
 
 // General Styles -- from bh9.scss
 // General Styles -- from bh9.scss
+// General Styles -- from bh9.scss
 * {
+    margin: 0 auto; // centers all elements
     margin: 0 auto; // centers all elements
     margin: 0 auto; // centers all elements
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+    line-height: 125%;
     line-height: 125%;
 
     // Transition all elements on the screen
@@ -104,13 +118,30 @@ $candid-blue: #6AC5E3;
 
 body {
     //margin: 0 auto; // centers all elements
+    //margin: 0 auto; // centers all elements
     margin-top: 2rem; // spacing
     background-color: $desat-blue;
     color: $white; // default text color
     text-align: left;
+    text-align: left;
 }
 
 h1 {
+    font-size: 5.64rem;
+    font-weight: 500; // semi-bold
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    padding-bottom: 1rem;
+}
+
+h3 {
+    font-size: 23px;
+    font-weight: 600;
+    line-height: 1.7rem;
+    padding-top: 2.7rem;
     font-size: 5.64rem;
     font-weight: 500; // semi-bold
 }
@@ -150,6 +181,25 @@ a {
         // -webkit-text-fill-color: $off-white;
         // -moz-text-fill-color: $off-white;
     }
+    line-height: 133%; // spacing between lines
+
+    &:last-child {
+        padding-bottom: 0;
+    }
+}
+
+a {
+    text-decoration: none;
+    // color: $blue;
+    // border-bottom: 2px solid $blue;
+
+    &:hover, &:focus, &:active {
+        font-weight: bold;
+        text-decoration: none;
+
+        // -webkit-text-fill-color: $off-white;
+        // -moz-text-fill-color: $off-white;
+    }
 }
 
 // Typography
@@ -158,6 +208,8 @@ a {
 }
 
 // Mixins - imported from bh9.scss
+@mixin button-primary { // main orange button
+    background-color: $orange;
 @mixin button-primary { // main orange button
     background-color: $orange;
     text-decoration: none;
@@ -169,6 +221,7 @@ a {
     text-align: center;
     display: inline-block;
     color: $desat-blue;
+    color: $desat-blue;
     font-size: var(--body-font-size);
     cursor: pointer;
     transition: 0.2s all;
@@ -177,10 +230,15 @@ a {
         border: 2px solid $white;
         background-color: $white;
         color: $desat-blue;
+        border: 2px solid $white;
+        background-color: $white;
+        color: $desat-blue;
     }
 
     &:active {
         transform: translateY(4px);
+        color: $desat-blue;
+        background-color: $off-white;
         color: $desat-blue;
         background-color: $off-white;
     }
@@ -191,7 +249,11 @@ a {
 }
 
 @mixin button-secondary { // "clear" desat-blue button
+@mixin button-secondary { // "clear" desat-blue button
     @include button-primary;
+    background-color: $desat-blue;
+    color: $off-white;
+    border: 2px solid $off-white;
     background-color: $desat-blue;
     color: $off-white;
     border: 2px solid $off-white;
@@ -1913,7 +1975,38 @@ footer {
 
 // Mobile Styling
 @media screen and (max-width: 800px) {
+// Mobile Styling
+@media screen and (max-width: 800px) {
 
+    // Rest the left-right page margin (hacky)
+    #hero {
+        padding: 150px 0 0;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    #sponsors #sponsor-content {
+        padding: 3rem 1rem;
+    }
+    #sponsor-logos {
+        margin: 0 1rem;
+    }
+    #register-end {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        h1 {
+            font-size: 3rem;
+        }
+    }
+    #contact #contact-content {
+        padding: 3rem 1rem;
+    }
+    #about #about-text, #about #about-cards, #about #about-stats, #faq {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    h1 {
+        font-size: 2.8rem;
     // Rest the left-right page margin (hacky)
     #hero {
         padding: 150px 0 0;
@@ -1951,11 +2044,14 @@ footer {
 
             width: 94%;
             height: 100%;
+            width: 94%;
+            height: 100%;
 
             // Window adjustment to fit to screen
             p {
                 padding-top: 1rem;
                 margin-left: 1rem;
+                margin-right: 1rem;
                 margin-right: 1rem;
             }
 
@@ -1963,6 +2059,7 @@ footer {
 
                 .title {
                     right: 5px;
+                    bottom: 42px;
                     bottom: 42px;
                 }
             }
@@ -2106,6 +2203,12 @@ footer {
         }
     }
 
+    // Footer
+    footer {
+        flex-direction: column;
+
+        #footer-left {
+            padding: 0;
     // Footer
     footer {
         flex-direction: column;
