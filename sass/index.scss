@@ -247,7 +247,6 @@ a {
 }
 
 @mixin button-secondary { // "clear" desat-blue button
-@mixin button-secondary { // "clear" desat-blue button
     @include button-primary;
     background-color: $desat-blue;
     color: $off-white;
