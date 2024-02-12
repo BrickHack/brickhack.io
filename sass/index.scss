@@ -209,9 +209,7 @@ a {
 
 // Mixins - imported from bh9.scss
 @mixin button-primary { // main orange button
-    background-color: $orange;
-@mixin button-primary { // main orange button
-    background-color: $orange;
+    background-color: $orange; 
     text-decoration: none;
     user-select: none;
     padding: 1rem 1.5rem;
