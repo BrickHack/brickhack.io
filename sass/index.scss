@@ -1973,8 +1973,6 @@ footer {
 
 // Mobile Styling
 @media screen and (max-width: 800px) {
-// Mobile Styling
-@media screen and (max-width: 800px) {
 
     // Rest the left-right page margin (hacky)
     #hero {
@@ -2128,7 +2126,7 @@ footer {
     #prizes #prizes-card > .content .text .title {
         letter-spacing: 0.5rem;
     }
-
+}
 
 @media screen and (max-width: 650px) {
     // Nav
@@ -2201,12 +2199,6 @@ footer {
         }
     }
 
-    // Footer
-    footer {
-        flex-direction: column;
-
-        #footer-left {
-            padding: 0;
     // Footer
     footer {
         flex-direction: column;
