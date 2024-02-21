@@ -1185,6 +1185,7 @@ section {
             @include button-secondary();
         }
     }
+}
 
     .logo-group {
         align-items: center;
@@ -1194,6 +1195,12 @@ section {
         row-gap: 3rem;
         column-gap: 5rem;
         padding: 2rem 0;
+
+        .logo-background {
+            background-color: white;
+            border-radius: 20px;
+            padding: 20px !important;
+        }
 
         img {
             transition: all 0.2s;
@@ -1223,7 +1230,7 @@ section {
         }
 
         #wegmans { // logo size messes with scaling
-            height: 400px;
+            height: 250px;
             max-width: 100%;
         }
         
@@ -1253,7 +1260,6 @@ section {
             height: 50px;
         }
     }
-}
 
 // Sponsors
 #sponsors {
@@ -1348,7 +1354,7 @@ section {
         }
 
         #wegmans { // logo size messes with scaling
-            height: 400px;
+            height: 250px;
             max-width: 100%;
         }
         
