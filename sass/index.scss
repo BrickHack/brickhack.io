@@ -873,9 +873,9 @@ section {
             }
 
             &-complete {
-                opacity: 0.3;
+                /*opacity: 0.3;
                 background-color: $darker-blue;
-                border: none;
+                border: none;*/
             }
 
             &-live {
@@ -888,7 +888,7 @@ section {
             }
 
             .time {
-                /*opacity: 0.75;*/
+                opacity: 0.75;
                 font-size: 1rem;
                 text-align: left;
                 width: 50%;
@@ -896,7 +896,7 @@ section {
             }
             
             .location {
-                /*opacity: 0.75;*/
+                opacity: 0.75;
                 font-size: 1rem;
                 text-align: right;
                 width: 50%;
@@ -1211,7 +1211,7 @@ section {
 
         #paychex { // logo size messes with scaling
             height: 50px;
-            max-width: 100%;
+            max-width: 50%;
         }
     }
     
