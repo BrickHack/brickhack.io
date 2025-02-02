@@ -1068,7 +1068,7 @@ section {
         width: 85%;
         max-width: 980px;
         height: auto;
-        background-color: $darker-blue;
+        background-color: $off-white;
         margin: 0 auto;
     }
 
@@ -1205,6 +1205,11 @@ section {
 
     #bronze-silver-tier img {
         height: 150px;
+
+        #paychex { // logo size messes with scaling
+            height: 50px;
+            max-width: 100%;
+        }
     }
     
     #partners {
