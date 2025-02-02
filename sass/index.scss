@@ -1203,8 +1203,11 @@ section {
         }
     }
 
-    #bronze-silver-tier img {
-        height: 150px;
+    #bronze-silver-tier {
+
+        img {
+            height: 150px;
+        }
 
         #paychex { // logo size messes with scaling
             height: 50px;
