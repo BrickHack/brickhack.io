@@ -1135,93 +1135,6 @@ section {
 
 // Sponsors
 #sponsors {
-    #sponsor-btns {
-        margin: 1rem 0 2rem;
-        display: flex;
-
-        #prospectus {
-            @include button-primary();
-            margin-right: 2rem;
-        }
-
-        #email {
-            @include button-secondary();
-        }
-    }
-}
-
-    .logo-group {
-        align-items: center;
-        display: flex;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
-        row-gap: 3rem;
-        column-gap: 5rem;
-        padding: 2rem 0;
-
-        .logo-background {
-            background-color: white;
-            border-radius: 20px;
-            padding: 20px !important;
-        }
-
-        img {
-            transition: all 0.2s;
-
-            &:hover {
-                transform: translateY(-10px);
-                transition: all 0.2s;
-            }
-        }
-    }
-
-    #brick-tier img {
-        height: 275px;
-        max-width: 100%;
-    }
-
-    #platinum-tier img {
-        height: 255px;
-        max-width: 100%;
-    }
-
-    #gold-tier img {
-        height: 175px;
-        max-width: 100%;
-    }
-
-    #bronze-silver-tier {
-
-        img {
-            height: 150px;
-        }
-
-        #paychex { // logo size messes with scaling
-            height: 20px;
-            max-width: 100%;
-        }
-    }
-    
-    #partners {
-        padding-top: 1rem;
-
-        img {
-            height: 80px;
-            max-width: 90%;
-        }
-
-        #stickermule { // their brand's padding messes with size consistancy
-            height: 100px;
-        }
-
-        #wegmans { // logo size messes with scaling
-            height: 250px;
-            max-width: 100%;
-        }
-    }
-
-// Sponsors
-#sponsors {
     flex-direction: row;
     justify-content: space-around;
 
@@ -1317,7 +1230,7 @@ section {
         }
 
         #paychex { // logo size messes with scaling
-            height: 20px;
+            height: 40px;
             max-width: 100%;
         }
     }
@@ -1335,7 +1248,7 @@ section {
         }
 
         #wegmans { // logo size messes with scaling
-            height: 250px;
+            height: 125px;
             max-width: 100%;
         }
     }
