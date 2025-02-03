@@ -1144,6 +1144,7 @@ section {
     }
 
     #sponsor-content {
+        max-width: 90%;
         padding: 3rem 1rem 3rem 1rem;
         order: 2;
         z-index: 1;
@@ -1230,7 +1231,7 @@ section {
         }
 
         #paychex { // logo size messes with scaling
-            height: 40px;
+            height: 60px;
             max-width: 100%;
         }
     }
@@ -1243,7 +1244,7 @@ section {
             max-width: 90%;
         }
 
-        #stickermule { // their brand's padding messes with size consistancy
+        #standoutStickers { // their brand's padding messes with size consistancy
             height: 100px;
         }
 
