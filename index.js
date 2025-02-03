@@ -101,8 +101,8 @@ for (let i = 0; i < card.length; i++) {
 $('#saturday').click(function() {
     $('#saturday').addClass('day-active');
     $('#sunday').removeClass('day-active');
-    $('#feb-24-content').show();
-    $('#feb-25-content').hide();
+    $('#feb-22-content').show();
+    $('#feb-23-content').hide();
     $('#date-indicator-saturday').show();
     $('#date-indicator-sunday').hide();
 });
@@ -110,8 +110,8 @@ $('#saturday').click(function() {
 $('#sunday').click(function() {
     $('#sunday').addClass('day-active');
     $('#saturday').removeClass('day-active');
-    $('#feb-25-content').show();
-    $('#feb-24-content').hide();
+    $('#feb-23-content').show();
+    $('#feb-22-content').hide();
     $('#date-indicator-sunday').show();
     $('#date-indicator-saturday').hide();
 });
@@ -120,11 +120,11 @@ $('#sunday').click(function() {
 // Setting the schedule to match the day
 let currentDate = new Date().getDate()
 // Before/during saturday
-if (currentDate <= 24) { // if date is before or equal to the 25th of the month
+if (currentDate <= 22) { // if date is before or equal to the 22nd of the month
     $('#saturday').addClass('day-active');
     $('#sunday').removeClass('day-active');
-    $('#feb-24-content').show();
-    $('#feb-25-content').hide();
+    $('#feb-22-content').show();
+    $('#feb-23-content').hide();
     $('#date-indicator-saturday').show();
     $('#date-indicator-sunday').hide();
 }
@@ -132,8 +132,8 @@ if (currentDate <= 24) { // if date is before or equal to the 25th of the month
 else  {
     $('#sunday').addClass('day-active');
     $('#saturday').removeClass('day-active');
-    $('#feb-25-content').show();
-    $('#feb-24-content').hide();
+    $('#feb-23-content').show();
+    $('#feb-22-content').hide();
     $('#date-indicator-sunday').show();
     $('#date-indicator-saturday').hide();
 }
@@ -184,8 +184,8 @@ function handleEventData(events) {
         var eventContainer;
         // Deciding which day content box it goes inside
         switch (startDate.getDate()) {
-            case 24: eventContainer = $('#feb-24-content'); break; // case numbers correlate with the days of the event
-            case 25: eventContainer = $('#feb-25-content'); break;
+            case 22: eventContainer = $('#feb-22-content'); break; // case numbers correlate with the days of the event
+            case 23: eventContainer = $('#feb-23-content'); break;
         }
         // If it doesn't fall into one of those event days, log the problem and quit trying to add it
         if (!eventContainer) {

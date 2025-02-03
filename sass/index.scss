@@ -851,7 +851,7 @@ section {
         width: 55%;
         align-self: flex-start;
 
-        #feb-25-content {
+        #feb-23-content {
             display: none;
         }
 
@@ -1185,22 +1185,9 @@ section {
         max-width: 100%;
     }
 
-    #gold-tier {
-
-        #mttech { // logo shape messes with scaling
-            height: 150px;
-            max-width: 100%;
-        }
-
-        #wegmans { // logo size messes with scaling
-            height: 250px;
-            max-width: 100%;
-        }
-        
-        img {
-            height: 175px;
-            max-width: 100%;
-        }
+    #gold-tier img {
+        height: 175px;
+        max-width: 100%;
     }
 
     #bronze-silver-tier {
@@ -1210,8 +1197,8 @@ section {
         }
 
         #paychex { // logo size messes with scaling
-            height: 50px;
-            max-width: 50%;
+            height: 80px;
+            max-width: 90%;
         }
     }
     
@@ -1227,8 +1214,9 @@ section {
             height: 100px;
         }
 
-        #simone { // their logo's shape messes with size consistancy
-            height: 50px;
+        #wegmans { // logo size messes with scaling
+            height: 250px;
+            max-width: 100%;
         }
     }
 
